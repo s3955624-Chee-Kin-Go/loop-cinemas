@@ -40,9 +40,9 @@ function MovieCard({imageUrl, title, text}) {
       </div>
     </MDBCard>
 
-    <MDBModal show={MovieModal} setShow={setMovieModal} tabIndex="-1">
-      <MDBModalDialog style={{maxWidth: "35%"}} className="modal-lg">
-        <MDBModalContent style={{ backgroundColor: 'black', border: "2px solid white", width: "auto", height:"auto"}}>
+    <MDBModal show={MovieModal} setShow={setMovieModal} tabIndex="-1" centered>
+      <MDBModalDialog centered style={{maxWidth: "35%"}} size="lg">
+        <MDBModalContent style={{ backgroundColor: 'black', border: "2px solid white"}}>
           <MDBModalBody>
             <div style={{display:"flex", flexDirection: "row"}}>
               <div className="modal-image" style={{marginRight:"15px"}}>

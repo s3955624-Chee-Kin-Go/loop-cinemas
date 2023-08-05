@@ -5,7 +5,7 @@ import './pageCSS/Home.css';
 
 function Home() {
   return (
-    <section className="movie-section">
+    <section className="movie-section">98
       <div className='movie-row'>
         <div className='movie-column'>
           <MovieCard
