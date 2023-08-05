@@ -30,7 +30,7 @@ function MovieCard({imageUrl, title, text}) {
       <img
         src={imageUrl}
         position="top"
-        style={{width: "250px", height: "350px", objectFit: "cover"}}
+        style={{aspectRatio:"2/3",width: "250px", objectFit: "cover"}}
       />
       <div className='mask' style={{backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <div>
@@ -48,7 +48,7 @@ function MovieCard({imageUrl, title, text}) {
               <div className="modal-image" style={{marginRight:"15px"}}>
               <img
                 src={imageUrl}
-                style={{width: "250px", height: "350px", objectFit: "cover"}}
+                style={{aspectRatio:"2/3",width: "250px", objectFit: "cover"}}
               />
               </div>
               <div style={{marginLeft:"15px", width: "100%"}}>
