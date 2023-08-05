@@ -81,10 +81,6 @@ const Footer = () => {
                     <MDBBtn outline color="light" floating href='#!' role='button' className='social-icon'>
                         <MDBIcon fab icon="tiktok" />
                     </MDBBtn>
-
-                    <MDBBtn outline color="light" floating href='#!' role='button' className='social-icon'>
-                        <MDBIcon fab icon="youtube" />
-                    </MDBBtn>
                 </div>
             </div>
         </div>
