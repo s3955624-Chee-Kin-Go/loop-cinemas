@@ -16,7 +16,7 @@ body {
 
 .movie-section {
     margin: 0;
-    padding: 10rem 10rem;
+    padding: 5rem 10rem;
     background: black;
 }
 
@@ -31,4 +31,24 @@ body {
 
 .movie-column {
     margin: 15px;
+}
+
+.about-us-section {
+    margin: 0;
+    padding: 5rem 10rem;
+    background: black;
+    border-top: 1px solid #E50815;
+}
+
+.about-us-section h1 {
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    font-size: 25px;
+    color: #E50815;
+}
+
+.about-us-section p {
+    font-family: var(--font-montserrat);
+    font-size: 16px;
+    color: white;
 }
