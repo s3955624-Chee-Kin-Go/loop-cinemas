@@ -1,7 +1,8 @@
 import React from 'react';
+import './pageCSS/Home.css';
 import logo from "../logo.svg";
 import MovieCard from './pageResources/MovieCard';
-import './pageCSS/Home.css';
+import AboutUs from './pageResources/AboutUs'
 import Footer from '../fragments/Footer';
 
 function Home() {
@@ -36,19 +37,8 @@ function Home() {
       </div>
     </section>
 
-    <section className="about-us-section">
-      <div className='about-us-text'>
-        <h1>ABOUT US</h1>
-        <p>Welcome to Loop Cinemas, where movie magic comes to life.</p>
-        <p>Experience immersive cinema with state-of-the-art technology and a curated selection of blockbusters, classics, and indie gems.</p>
-        <p>Our commitment to excellence ensures unforgettable moments on the big screen.</p>
-        <p>Join us at Loop Cinemas for a reel adventure unlike any other.</p>
-      </div>
-      <div className='about-us-img'>
-        <img src='https://cdn.eventcinemas.com.au/cdn/resources/experience/vmax/about/images/840abc97-1d62-436e-b088-01611daef1cf.jpg'/>
-      </div>
-      
-    </section>
+    <AboutUs />
+    
     <Footer />
     </>
   );
