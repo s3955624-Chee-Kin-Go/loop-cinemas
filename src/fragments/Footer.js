@@ -29,28 +29,31 @@ const Footer = () => {
                 <MDBAccordion>
                     <MDBAccordionItem collapseId={1} headerTitle='MELBOURNE' bodyClassName='accordionStyle'>
                         <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
+                        <p>Victoria Gardens</p>
+                        <p>Greensborough</p>
+                        <p>Parkville</p>
                     </MDBAccordionItem>
-                    <MDBAccordionItem collapseId={2} headerTitle='SDYNEY'>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
+                    <MDBAccordionItem collapseId={2} headerTitle='SYDNEY'>
+                        <p>Auburn</p>
+                        <p>Bankstown</p>
+                        <p>Beverly Hills</p>
+                        <p>Bondi</p>
+                        <p>Minchinbury</p>
                     </MDBAccordionItem>
                     <MDBAccordionItem collapseId={3} headerTitle='PERTH'>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
+                        <p>Armadale</p>
+                        <p>Belmont</p>
+                        <p>Raine Square</p>
+                        <p>Rockingham</p>
                     </MDBAccordionItem>
                     <MDBAccordionItem collapseId={4} headerTitle='BRISBANE'>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
+                        <p>North Lake</p>
+                        <p>Stafford</p>
+                        <p>Sunnybank</p>
                     </MDBAccordionItem>
                     <MDBAccordionItem collapseId={5} headerTitle='CANBERRA'>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
-                        <p>Melbourne Central</p>
+                        <p>Belconnen</p>
+                        <p>Woden</p>
                     </MDBAccordionItem>
                 </MDBAccordion>
                 </div>
