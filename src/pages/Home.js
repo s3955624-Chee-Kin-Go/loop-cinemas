@@ -2,10 +2,12 @@ import React from 'react';
 import logo from "../logo.svg";
 import MovieCard from './pageResources/MovieCard';
 import './pageCSS/Home.css';
+import Footer from '../fragments/Footer';
 
 function Home() {
   return (
-    <section className="movie-section">98
+    <>
+    <section className="movie-section">
       <div className='movie-row'>
         <div className='movie-column'>
           <MovieCard
@@ -33,6 +35,8 @@ function Home() {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 }
 
