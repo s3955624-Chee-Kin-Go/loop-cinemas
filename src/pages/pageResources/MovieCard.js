@@ -30,25 +30,25 @@ function MovieCard({imageUrl, title, text}) {
       <img
         src={imageUrl}
         position="top"
-        className="card-image"
+        style={{width: "250px", height: "350px", objectFit: "cover"}}
       />
       <div className='mask' style={{backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <div>
-          <p className='card-title'>{title}</p>
-          <p className="card-desc">Click to view session time</p>
+          <p style={{fontFamily: "var(--font-montserrat)", fontSize: "28px", fontWeight: "600", color: "rgb(255, 255, 255)", textAlign:"center", lineHeight: "33.6px"}}>{title}</p>
+          <p style={{fontFamily: "var(--font-montserrat)", fontSize: "15px", fontWeight: "300", color: "rgb(255, 255, 255)", textAlign:"center"}}>Click to view session time</p>
         </div>
       </div>
     </MDBCard>
 
     <MDBModal show={MovieModal} setShow={setMovieModal} tabIndex="-1">
-      <MDBModalDialog>
-        <MDBModalContent style={{ backgroundColor: 'black', border: "2px solid white", width: "730px", height:"auto"}}>
+      <MDBModalDialog style={{maxWidth: "35%"}} className="modal-lg">
+        <MDBModalContent style={{ backgroundColor: 'black', border: "2px solid white", width: "auto", height:"auto"}}>
           <MDBModalBody>
             <div style={{display:"flex", flexDirection: "row"}}>
               <div className="modal-image" style={{marginRight:"15px"}}>
               <img
                 src={imageUrl}
-                className="card-image"
+                style={{width: "250px", height: "350px", objectFit: "cover"}}
               />
               </div>
               <div style={{marginLeft:"15px", width: "100%"}}>

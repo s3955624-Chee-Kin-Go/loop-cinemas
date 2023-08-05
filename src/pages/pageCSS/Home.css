@@ -32,26 +32,3 @@ body {
 .movie-column {
     margin: 15px;
 }
-
-.movie-column .card-image {
-    width: 350px;
-    height: 500px;
-    object-fit: cover;
-}
-
-.movie-column .mask .card-title{
-    font-family: var(--font-montserrat);
-    font-size: 28px;
-    font-weight: 600;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    line-height: 33.6px;
-}
-
-.movie-column .mask .card-desc {
-    font-family: var(--font-montserrat);
-    font-size: 15px;
-    font-weight: 300;
-    color: rgb(255, 255, 255);
-    text-align: center;
-}
