@@ -52,28 +52,32 @@ function SignIn(props) {
       <div className="signin-container">
         <h1>SIGN IN</h1>
         <div className="signin-row">
-          <div className="">
+
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="username" className="control-label">Username</label>
-                <input name="username" id="username" className="form-control"
+              <div className="form-container">
+                <label htmlFor="username">Username</label>
+                <input name="username" id="username" 
                   value={fields.username} onChange={handleInputChange} />
               </div>
-              <div className="form-group">
-                <label htmlFor="password" className="control-label">Password</label>
-                <input type="password" name="password" id="password" className="form-control"
+              <div className="form-container">
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" id="password" 
                   value={fields.password} onChange={handleInputChange} />
               </div>
-              <div className="form-group">
-                <input type="submit" className="btn btn-primary" value="Login" />
+              <div className="form-container">
+                  <input type="submit" className="btn submit-btn" value="LOGIN" />
               </div>
               {errorMessage !== null &&
-                <div className="form-group">
+                <div className="form-container">
                   <span className="text-danger">{errorMessage}</span>
                 </div>
               }
+              <div className="form-container">
+                <p className="signup-prompt">New to Loop Cinemas?</p>
+                  <input type="submit" className="btn submit-btn" value="SIGN Up" />
+              </div>
             </form>
-          </div>
+
         </div>
       </div>
     </section>

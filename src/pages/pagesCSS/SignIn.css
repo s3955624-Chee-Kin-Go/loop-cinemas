@@ -3,7 +3,7 @@
 .signin-section {
     margin: 0;
     padding: 5rem 10rem;
-    background: #CF141B;
+    background: black;
 }
 
 .signin-container {
@@ -11,22 +11,65 @@
     margin-right: auto;
     height: auto;
     width: 50%;
-    background-color: #000000;
+    background: #1A1A19;
     border-radius: 5px;
     padding: 2rem 3rem;
+    border: 2px solid #E50815;
 }
 
 h1 {
+    margin: 0;
     font-family: var(--font-montserrat);
     font-weight: 600;
     font-size: 25px;
     color: #E50815;
 }
 
-.signin-row {
-    -ms-display: -ms-flexbox; /* IE10 */
+/* .signin-row {
+    -ms-display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     flex-direction: row;
+} */
+
+.form-container {
+    margin-top: 1rem;
+}
+
+label {
+    font-family: var(--font-montserrat);
+    font-weight: 300;
+    font-size: 15px;
+    color: white;
+}
+
+input {
+    font-family: var(--font-montserrat);
+    font-weight: 300;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    width: fit-content !important;
+    padding: 1rem 2rem !important;
+    font-family: var(--font-montserrat) !important;
+    font-weight: 300 !important;
+    font-size: 15px !important;
+    background-color: #E50815 !important;
+    color: white !important;
+}
+
+.signup-prompt {
+    margin-top: 2rem;
+    font-family: var(--font-montserrat);
+    font-weight: 300;
+    font-size: 15px;
+    color: white;
 }
