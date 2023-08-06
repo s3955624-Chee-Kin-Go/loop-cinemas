@@ -15,7 +15,7 @@ import {
 const Footer = () => {
 
     return (
-    <section className="footer-section">
+    <footer className="footer-section">
         <div className='footer-row'>
             <div className='footer-column'>
                 <h3>MOVIES</h3>
@@ -91,7 +91,7 @@ const Footer = () => {
             <p>© 2023 Copyright Loop Cinemas. All Rights Reserved</p>
         </div>
       
-    </section>
+    </footer>
     );
 }
 
