@@ -17,11 +17,11 @@
     border: 2px solid #E50815;
 }
 
-h1 {
+.signin-container h1 {
     margin: 0;
     font-family: var(--font-montserrat);
     font-weight: 600;
-    font-size: 25px;
+    font-size: 32px;
     color: #E50815;
 }
 

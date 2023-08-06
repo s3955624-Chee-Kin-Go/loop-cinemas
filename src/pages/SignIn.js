@@ -52,7 +52,7 @@ function SignIn(props) {
   return (
     <section className="signin-section">
       <div className="signin-container">
-        <h1>SIGN IN</h1>
+        <h1>Sign In</h1>
         <div className="signin-row">
 
             <form onSubmit={handleSubmit}>
