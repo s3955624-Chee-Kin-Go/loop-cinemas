@@ -66,7 +66,7 @@ function SignIn(props) {
                   value={fields.password} onChange={handleInputChange} />
               </div>
               <div className="form-container">
-                  <input type="submit" className="btn submit-btn" value="LOGIN" />
+                  <input type="submit" className="btn submit-btn" value="SIGN IN" />
               </div>
               {errorMessage !== null &&
                 <div className="form-container">
