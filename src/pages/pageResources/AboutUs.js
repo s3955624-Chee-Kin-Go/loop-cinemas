@@ -6,7 +6,7 @@ function AboutUs() {
     return (
         <section className="about-us-section">
             <div className='about-us-text'>
-                <h1>ABOUT US</h1>
+                <h1>About Us</h1>
                 <p>Welcome to Loop Cinemas, where movie magic comes to life.</p>
                 <p>Experience immersive cinema with state-of-the-art technology and a curated selection of blockbusters, classics, and indie gems.</p>
                 <p>Our commitment to excellence ensures unforgettable moments on the big screen.</p>

@@ -8,6 +8,7 @@ import Footer from '../fragments/Footer';
 function Home() {
   return (
     <>
+    <h1 className='section-title'>Coming Soon</h1>
     <section className="movie-section">
       <div className='movie-row'>
         <div className='movie-column'>

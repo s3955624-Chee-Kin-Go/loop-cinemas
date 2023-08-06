@@ -32,3 +32,11 @@ body {
 .movie-column {
     margin: 15px;
 }
+
+.section-title{
+    padding-left: 10rem;
+    font-size: 2rem;
+    padding-top: 2em;
+    margin-bottom: -2em;
+    background-color: black;
+}
