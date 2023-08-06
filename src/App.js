@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import MyProfile from "./pages/MyProfile";
 import Forum from "./pages/Forum";
+import SignUp from "./pages/SignUp";
 import { getUser, removeUser } from "./data/repository";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home username={username} />} />
               <Route path="/sign-in" element={<SignIn loginUser={loginUser} />} />
+              <Route path="/sign-up" element={<SignUp loginUser={loginUser} />} />
               <Route path="/profile" element={<MyProfile username={username} />} />
               <Route path="/forum" element={<Forum username={username} />} />
             </Routes>

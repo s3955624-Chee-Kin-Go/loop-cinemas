@@ -3,10 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { verifyUser } from "../data/repository";
 import '../pages/pagesCSS/SignIn.css';
 
-/* FIX THIS: Provide visual cue upon successful login. The visual cue could be a text or a pop-up message.*/
-
-
-function SignIn(props) {
+function SignUp(props) {
   const [fields, setFields] = useState({ username: "", password: "" });
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
@@ -52,21 +49,23 @@ function SignIn(props) {
   return (
     <section className="signin-section">
       <div className="signin-container">
-        <h1>Sign In</h1>
+        <h1>Sign Up</h1>
         <div className="signin-row">
             <form onSubmit={handleSubmit}>
               <div className="form-container">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">Name</label>
                 <input name="username" id="username" 
                   value={fields.username} onChange={handleInputChange} />
+              </div>
+              <div className="form-container">
+                <label htmlFor="email">Email</label>
+                <input name="email" id="email" 
+                  value={fields.email} onChange={handleInputChange} />
               </div>
               <div className="form-container">
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" 
                   value={fields.password} onChange={handleInputChange} />
-              </div>
-              <div className="form-container">
-                  <input type="submit" className="btn submit-btn" value="LOGIN" />
               </div>
               {errorMessage !== null &&
                 <div className="form-container">
@@ -74,8 +73,7 @@ function SignIn(props) {
                 </div>
               }
               <div className="form-container">
-                <p className="signup-prompt">New to Loop Cinemas?</p>
-                  <Link className="btn submit-btn" to="/sign-up">SIGN UP</Link>
+                  <Link className="btn submit-btn" to="/">Create Account</Link>
               </div>
             </form>
         </div>
@@ -84,4 +82,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
+export default SignUp;
