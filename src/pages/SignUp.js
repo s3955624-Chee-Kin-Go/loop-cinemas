@@ -75,6 +75,10 @@ function SignUp(props) {
               <div className="form-container">
                   <Link className="btn submit-btn" to="/">Create Account</Link>
               </div>
+              <div className="form-container">
+                <p className="signup-prompt">Already have an account?</p>
+                  <Link className="btn submit-btn" to="/sign-in">Sign In</Link>
+              </div>
             </form>
         </div>
       </div>
