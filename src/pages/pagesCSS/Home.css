@@ -39,4 +39,8 @@ body {
     padding-top: 2em;
     margin-bottom: -2em;
     background-color: black;
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    font-size: 25px;
+    color: #E50815;
 }
