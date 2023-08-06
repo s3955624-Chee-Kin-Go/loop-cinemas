@@ -15,6 +15,13 @@ function AboutUs() {
             <div className='about-us-img'>
                 <img src='https://cdn.eventcinemas.com.au/cdn/resources/experience/vmax/about/images/840abc97-1d62-436e-b088-01611daef1cf.jpg'/>
             </div>
+            <div className='about-us-text'>
+                <h2>What Makes Us Different?</h2>
+                <li>State-of-the-Art Technology</li>
+                <li>Exclusive Event and Premiers</li>
+                <li>Diverse and Curation Film Selection</li>
+                <li>VIP Lounges and Gourmet Food Options</li>
+            </div>
         </section>
     );
 }

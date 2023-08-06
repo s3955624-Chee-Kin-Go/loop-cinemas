@@ -28,6 +28,22 @@
     color: white;
 }
 
+.about-us-text h2 {
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    font-size: 25px;
+    padding-top: 1em;
+    color: #E50815;
+}
+
+.about-us-text li{
+    font-family: var(--font-montserrat);
+    font-size: 16px;
+    color: #fefefe;
+    padding-left: 1em;
+    padding-bottom: 5px;
+}
+
 .about-us-img {
     width: 40%;
 }
