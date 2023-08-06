@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { verifyUser } from "../data/repository";
 import '../pages/pagesCSS/SignIn.css';
 
+/* FIX THIS: Provide visual cue upon successful login. The visual cue could be a text or a pop-up message.*/
+
 
 function SignIn(props) {
   const [fields, setFields] = useState({ username: "", password: "" });
