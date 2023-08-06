@@ -7,7 +7,7 @@ function Navbar() {
     <>
       <div className="navbar">
           <Link to="/">Logo</Link>
-          <Link className="nav-link" to="/login">Login</Link>
+          <Link className="nav-link" to="/sign-in">Sign In</Link>
       </div>
     </>
   );
