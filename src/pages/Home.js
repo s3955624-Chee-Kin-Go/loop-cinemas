@@ -1,5 +1,5 @@
 import React from 'react';
-import './pageCSS/Home.css';
+import './pagesCSS/Home.css';
 import logo from "../logo.svg";
 import MovieCard from './pageResources/MovieCard';
 import AboutUs from './pageResources/AboutUs'
@@ -63,7 +63,6 @@ function Home() {
 
     <AboutUs />
     
-    <Footer />
     </>
   );
 }

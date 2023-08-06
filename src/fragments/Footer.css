@@ -1,6 +1,6 @@
 .footer-section {
     margin: 0;
-    padding: 3rem 10rem;
+    
     background: #1A1A1A;
 }
 
@@ -10,7 +10,7 @@
     -ms-flex-wrap: wrap; /* IE10 */
     flex-wrap: wrap;
     flex-direction: row;
-    padding-bottom: 3rem;
+    padding: 3rem 10rem;
 }
 
 .footer-column {
@@ -71,7 +71,7 @@
 
 .copyright {
     border-top: 1px solid #E50815 !important;
-    padding-top: 3rem;
+    padding: 2rem 0;
 }
 
 .copyright p {
@@ -79,4 +79,5 @@
     font-size: 14px;
     color: white;
     text-align: center;
+    margin-bottom: 0;
 }

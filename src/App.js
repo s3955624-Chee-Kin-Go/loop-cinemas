@@ -1,21 +1,42 @@
-import './App.css';
-import Home from "./pages/Home";
-
-
-
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import { MDBBtn } from 'mdb-react-ui-kit';
+import Navbar from "./fragments/Navbar";
+import Footer from "./fragments/Footer";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import MyProfile from "./pages/MyProfile";
+import Forum from "./pages/Forum";
+import { getUser, removeUser } from "./data/repository";
 
 function App() {
+  const [username, setUsername] = useState(getUser());
+
+  const loginUser = (username) => {
+    setUsername(username);
+  }
+
+  const logoutUser = () => {
+    removeUser();
+    setUsername(null);
+  }
+
   return (
-    <Router>
-        {/* <Navbar username={username} logoutUser={logoutUser} /> */}
+    <div className="d-flex flex-column min-vh-100">
+      <Router>
+        <Navbar username={username} logoutUser={logoutUser} />
+        <main>
+          <div className="">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home username={username} />} />
+              <Route path="/login" element={<Login loginUser={loginUser} />} />
+              <Route path="/profile" element={<MyProfile username={username} />} />
+              <Route path="/forum" element={<Forum username={username} />} />
             </Routes>
-        {/* <Footer /> */}
-    </Router>
+          </div>
+        </main>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
