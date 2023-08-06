@@ -66,6 +66,12 @@ input {
     color: white !important;
 }
 
+span {
+    font-family: var(--font-montserrat);
+    font-weight: 300;
+    font-size: 15px;
+}
+
 .signup-prompt {
     margin-top: 2rem;
     font-family: var(--font-montserrat);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { verifyUser } from "../data/repository";
 import '../pages/pagesCSS/SignIn.css';
 
@@ -74,7 +74,7 @@ function SignIn(props) {
               }
               <div className="form-container">
                 <p className="signup-prompt">New to Loop Cinemas?</p>
-                  <input type="submit" className="btn submit-btn" value="SIGN Up" />
+                  <Link className="btn submit-btn" to="/">SIGN UP</Link>
               </div>
             </form>
 
