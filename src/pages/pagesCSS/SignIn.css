@@ -64,6 +64,7 @@ input {
     font-size: 15px !important;
     background-color: #E50815 !important;
     color: white !important;
+    margin-top: 10px;
 }
 
 span {
@@ -74,6 +75,7 @@ span {
 
 .signup-prompt {
     margin-top: 2rem;
+    margin-bottom: 0em;
     font-family: var(--font-montserrat);
     font-weight: 300;
     font-size: 15px;
