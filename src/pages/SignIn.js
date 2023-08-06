@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { verifyUser } from "../data/repository";
-import '../pages/pagesCSS/Login.css';
+import '../pages/pagesCSS/SignIn.css';
 
 
-function Login(props) {
+function SignIn(props) {
   const [fields, setFields] = useState({ username: "", password: "" });
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
@@ -48,35 +48,36 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <hr />
-      <div className="row">
-        <div className="col-md-6">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="username" className="control-label">Username</label>
-              <input name="username" id="username" className="form-control"
-                value={fields.username} onChange={handleInputChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password" className="control-label">Password</label>
-              <input type="password" name="password" id="password" className="form-control"
-                value={fields.password} onChange={handleInputChange} />
-            </div>
-            <div className="form-group">
-              <input type="submit" className="btn btn-primary" value="Login" />
-            </div>
-            {errorMessage !== null &&
+    <section className="signin-section">
+      <div className="signin-container">
+        <h1>SIGN IN</h1>
+        <div className="signin-row">
+          <div className="">
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <span className="text-danger">{errorMessage}</span>
+                <label htmlFor="username" className="control-label">Username</label>
+                <input name="username" id="username" className="form-control"
+                  value={fields.username} onChange={handleInputChange} />
               </div>
-            }
-          </form>
+              <div className="form-group">
+                <label htmlFor="password" className="control-label">Password</label>
+                <input type="password" name="password" id="password" className="form-control"
+                  value={fields.password} onChange={handleInputChange} />
+              </div>
+              <div className="form-group">
+                <input type="submit" className="btn btn-primary" value="Login" />
+              </div>
+              {errorMessage !== null &&
+                <div className="form-group">
+                  <span className="text-danger">{errorMessage}</span>
+                </div>
+              }
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default Login;
+export default SignIn;

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./fragments/Navbar";
 import Footer from "./fragments/Footer";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 import MyProfile from "./pages/MyProfile";
 import Forum from "./pages/Forum";
 import { getUser, removeUser } from "./data/repository";
@@ -28,7 +28,7 @@ function App() {
           <div className="">
             <Routes>
               <Route path="/" element={<Home username={username} />} />
-              <Route path="/login" element={<Login loginUser={loginUser} />} />
+              <Route path="/sign-in" element={<SignIn loginUser={loginUser} />} />
               <Route path="/profile" element={<MyProfile username={username} />} />
               <Route path="/forum" element={<Forum username={username} />} />
             </Routes>

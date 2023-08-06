@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.signin-section {
+    margin: 0;
+    padding: 5rem 10rem;
+    background: #CF141B;
+}
+
+.signin-container {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 50%;
+    background-color: #000000;
+    border-radius: 5px;
+    padding: 2rem 3rem;
+}
+
+h1 {
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    font-size: 25px;
+    color: #E50815;
+}
+
+.signin-row {
+    -ms-display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    flex-direction: row;
+}
