@@ -1,12 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import {
-    MDBFooter,
-    MDBContainer,
     MDBIcon,
-    MDBInput,
-    MDBCol,
-    MDBRow,
     MDBBtn,
     MDBAccordion,
     MDBAccordionItem
@@ -69,19 +64,19 @@ const Footer = () => {
             <div className='footer-column'>
                 <h3>FOLLOW US ON</h3>
                 <div className='footer-desc'>
-                    <MDBBtn outline color="light" floating href='#!' role='button' className='social-icon'>
+                    <MDBBtn outline color="light" floating href='https://www.facebook.com/' target='_blank' role='button' className='social-icon'>
                         <MDBIcon fab icon='facebook-f' />
                     </MDBBtn>
 
-                    <MDBBtn outline color="light" floating href='#!' role='button' className='social-icon'>
+                    <MDBBtn outline color="light" floating href='https://www.instagram.com/' target='_blank' role='button' className='social-icon'>
                         <MDBIcon fab icon='instagram' />
                     </MDBBtn>
 
-                    <MDBBtn outline color="light" floating href='#!' role='button' className='social-icon'>
+                    <MDBBtn outline color="light" floating href='https://twitter.com/' target='_blank' role='button' className='social-icon'>
                         <MDBIcon fab icon='twitter' />
                     </MDBBtn>
 
-                    <MDBBtn outline color="light" floating href='#!' role='button' className='social-icon'>
+                    <MDBBtn outline color="light" floating href='https://www.tiktok.com/' target='_blank' role='button' className='social-icon'>
                         <MDBIcon fab icon="tiktok" />
                     </MDBBtn>
                 </div>

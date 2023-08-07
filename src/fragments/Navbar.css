@@ -4,10 +4,16 @@
 }
 
 .navbar a {
+  font-family: var(--font-montserrat);
   float: left;
+  font-weight: 600;
+  font-size: 17px;
   color: red;
   text-align: center;
-  padding: 1em 6em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 10em;
+  padding-left: 7em;
   text-decoration: none;
 }
 

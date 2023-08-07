@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <>
       <div className="navbar">
-          <Link to="/">Logo</Link>
+          <Link to="/">Loop Cinemas</Link>
           <Link className="nav-link" to="/sign-in">Sign In</Link>
       </div>
     </>
