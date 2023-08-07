@@ -4,7 +4,7 @@ import { verifyUser } from "../data/repository";
 import '../pages/pagesCSS/SignIn.css';
 
 function SignUp(props) {
-  const [fields, setFields] = useState({ username: "", password: "" });
+  const [fields, setFields] = useState({ username: "", email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ function SignUp(props) {
     const value = event.target.value;
 
     // Copy fields.
-    const temp = { username: fields.username, password: fields.password };
+    const temp = { username: fields.username, email: fields.email, password: fields.password};
     // OR use spread operator.
     // const temp = { ...fields };
 
@@ -26,8 +26,18 @@ function SignUp(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const verified = verifyUser(fields.username, fields.password);
+    // Check if username, email, and password are empty
+    if (fields.username === "" || fields.email === "" || fields.password === "") {
+      setErrorMessage("Please fill in all the required fields.");
+      return;
+    }
+    else if (!fields.email.includes("@") || !fields.email.endsWith(".com")) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
 
+    const verified = verifyUser(fields.username, fields.password);
+    
     // If verified login the user.
     if(verified === true) {
       props.loginUser(fields.username);
@@ -44,6 +54,7 @@ function SignUp(props) {
 
     // Set error message.
     setErrorMessage("Username and / or password invalid, please try again.");
+
   }
 
   return (
@@ -51,30 +62,30 @@ function SignUp(props) {
       <div className="signin-container">
         <h1>Sign Up</h1>
         <div className="signin-row">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               <div className="form-container">
                 <label htmlFor="username">Name</label>
                 <input name="username" id="username" 
-                  value={fields.username} onChange={handleInputChange} />
+                  value={fields.username} onChange={handleInputChange} required/>
               </div>
               <div className="form-container">
                 <label htmlFor="email">Email</label>
-                <input name="email" id="email" 
+                <input type="email" name="email" id="email" required 
                   value={fields.email} onChange={handleInputChange} />
               </div>
               <div className="form-container">
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" 
-                  value={fields.password} onChange={handleInputChange} />
+                  value={fields.password} onChange={handleInputChange} required/>
+              </div>
+              <div className="form-container">
+                  <input type="submit" className="btn submit-btn" value="SIGN UP" />
               </div>
               {errorMessage !== null &&
                 <div className="form-container">
                   <span className="text-danger">{errorMessage}</span>
                 </div>
               }
-              <div className="form-container">
-                  <Link className="btn submit-btn" to="/">Create Account</Link>
-              </div>
               <div className="form-container">
                 <p className="signup-prompt">Already have an account?</p>
                   <Link className="btn submit-btn" to="/sign-in">Sign In</Link>
