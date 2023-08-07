@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Router>
-        <Navbar/>
+        <Navbar username={username} logoutUser={logoutUser}/>
         <main>
           <div className="">
             <Routes>

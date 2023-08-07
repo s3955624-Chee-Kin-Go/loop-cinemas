@@ -1,13 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
+import logo from "./Loop Cinemas Logo.png"
 
-function Navbar() {
+function Navbar(props) {
   return (
     <>
-      <div className="navbar">
-          <Link to="/">Loop Cinemas</Link>
-          <Link className="nav-link" to="/sign-in">Sign In</Link>
+      <div className="navBar">
+          <Link className="logo-link" to="/"><img className="img-style" alt="" src={logo}/></Link>
+          {props.username !== null &&
+              <>
+                <Link className="logo-link" to="/forum">Forum</Link>
+                {/*Link to Forum and Profile after successfully sign in*/}
+              </>
+          }
+          {props.username === null ?
+            <div className="box">
+            <Link className="" to="/sign-in">Sign In</Link>
+          </div>
+              
+              : 
+              <>
+              <p>Welcome, {props.username}</p>
+              <div className="box">
+                <Link className="" to="/sign-in" onClick={props.logoutUser}>Sign Out</Link>
+              </div>
+              </>
+          }
+          
       </div>
     </>
   );
