@@ -7,18 +7,24 @@ import SignIn from "./pages/SignIn";
 import MyProfile from "./pages/MyProfile";
 import Forum from "./pages/Forum";
 import SignUp from "./pages/SignUp";
-import { getUser, removeUser } from "./data/repository";
+import { getUser, getEmail, getPassword, removeUser } from "./data/repository";
 
 function App() {
   const [username, setUsername] = useState(getUser());
+  const [email, setEmail] = useState(getEmail());
+  const [password, setPasword] = useState(getPassword());
 
-  const loginUser = (username) => {
+  const loginUser = (username, email, password) => {
     setUsername(username);
+    setEmail(email);
+    setPasword(password);
   }
 
   const logoutUser = () => {
     removeUser();
     setUsername(null);
+    setEmail(null);
+    setPasword(null);
   }
 
   return (
@@ -31,7 +37,7 @@ function App() {
               <Route path="/" element={<Home username={username} />} />
               <Route path="/sign-in" element={<SignIn loginUser={loginUser} />} />
               <Route path="/sign-up" element={<SignUp loginUser={loginUser} />} />
-              <Route path="/profile" element={<MyProfile username={username} />} />
+              <Route path="/profile" element={<MyProfile username={username} email={email} password={password} />} />
               <Route path="/forum" element={<Forum username={username} />} />
             </Routes>
           </div>

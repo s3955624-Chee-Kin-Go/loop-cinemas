@@ -1,5 +1,7 @@
 const USERS_KEY = "users";
 const USER_KEY = "user";
+const USEREMAIL_KEY = "email";
+const USERPASSWORD_KEY = "password";
 
 // Initialise local storage "users" with data, if the data is already set this function returns immediately.
 function initUsers() {
@@ -11,10 +13,12 @@ function initUsers() {
   const users = [
     {
       username: "mbolger",
+      email: "mbolger@email.com",
       password: "abc123"
     },
     {
       username: "shekhar",
+      email: "shekhar@email.com",
       password: "def456"
     }
   ];
@@ -31,13 +35,23 @@ function getUsers() {
   return JSON.parse(data);
 }
 
+function addNewUser(newUsername, newEmail, newPassword) {
+  const users = getUsers();
+  users.push({
+    username: newUsername,
+    email: newEmail,
+    password: newPassword
+  });
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
 // NOTE: In this example the login is also persistent as it is stored in local storage.
-function verifyUser(username, password) {
+function verifyUser(email, password) {
   const users = getUsers();
   for(const user of users) {
-    if(username === user.username && password === user.password)
+    if(email === user.email && password === user.password)
     {
-      setUser(username);
+      setUser(user.username, user.email, user.password);
       return true;
     }
   }
@@ -45,21 +59,36 @@ function verifyUser(username, password) {
   return false;
 }
 
-function setUser(username) {
+function setUser(username, email, password) {
   localStorage.setItem(USER_KEY, username);
+  localStorage.setItem(USEREMAIL_KEY, email);
+  localStorage.setItem(USERPASSWORD_KEY, password);
 }
 
 function getUser() {
   return localStorage.getItem(USER_KEY);
 }
 
+function getEmail() {
+  return localStorage.getItem(USEREMAIL_KEY);
+}
+
+function getPassword() {
+  return localStorage.getItem(USERPASSWORD_KEY);
+}
+
 function removeUser() {
   localStorage.removeItem(USER_KEY);
+  localStorage.removeItem(USEREMAIL_KEY);
+  localStorage.removeItem(USERPASSWORD_KEY);
 }
 
 export {
   initUsers,
   verifyUser,
+  addNewUser,
   getUser,
+  getEmail,
+  getPassword,
   removeUser
 }

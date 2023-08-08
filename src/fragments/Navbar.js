@@ -10,7 +10,8 @@ function Navbar(props) {
           <Link className="logo-link" to="/"><img className="img-style" alt="" src={logo}/></Link>
           {props.username !== null &&
               <>
-                <Link className="logo-link" to="/forum">Forum</Link>
+                <Link className="" to="/forum">Forum</Link>
+                <Link className="" to="/profile">Profile</Link>
                 {/*Link to Forum and Profile after successfully sign in*/}
               </>
           }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { verifyUser } from "../data/repository";
+import { addNewUser, verifyUser } from "../data/repository";
 import '../pages/pagesCSS/SignIn.css';
 
 function SignUp(props) {
@@ -36,14 +36,19 @@ function SignUp(props) {
       return;
     }
 
-    const verified = verifyUser(fields.username, fields.password);
+    // add new user into localStorage
+    addNewUser(fields.username, fields.email, fields.password);
+
+    const verified = verifyUser(fields.email, fields.password);
     
     // If verified login the user.
     if(verified === true) {
-      props.loginUser(fields.username);
+      props.loginUser(fields.email);
 
       // Navigate to the home page.
       navigate("/");
+      // Refresh page
+      navigate(0);
       return;
     }
 
@@ -53,7 +58,7 @@ function SignUp(props) {
     setFields(temp);
 
     // Set error message.
-    setErrorMessage("Username and / or password invalid, please try again.");
+    setErrorMessage("Email and / or password invalid, please try again.");
 
   }
 
