@@ -44,7 +44,7 @@ function SignUp(props) {
     // If verified login the user.
     if(verified === true) {
       props.loginUser(fields.email);
-
+      alert('Sign Up Successfull!');
       // Navigate to the home page.
       navigate("/");
       // Refresh page

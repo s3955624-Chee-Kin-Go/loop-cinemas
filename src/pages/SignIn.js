@@ -39,7 +39,7 @@ function SignIn(props) {
     // If verified login the user.
     if(verified === true) {
       props.loginUser(fields.email);
-
+      alert('Sign In Successfull!');
       // Navigate to the home page.
       navigate("/");
       // Refresh page
