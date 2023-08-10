@@ -41,7 +41,7 @@ function SignIn(props) {
       props.loginUser(fields.email);
       alert('Sign In Successfull!');
       // Navigate to the home page.
-      navigate("/");
+      navigate("/profile");
       // Refresh page
       navigate(0);
       return;
