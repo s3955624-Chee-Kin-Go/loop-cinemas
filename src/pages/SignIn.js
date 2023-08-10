@@ -33,6 +33,11 @@ function SignIn(props) {
       setErrorMessage("Please fill in all the required fields.");
       return;
     }
+    // Email Validation (checking if it includes @, ends with .com, and has a domain name)
+    else if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
 
     const verified = verifyUser(fields.email, fields.password);
 

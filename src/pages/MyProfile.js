@@ -1,5 +1,5 @@
 import React from "react";
-import { removeUser } from "../data/repository";
+import { deleteUser, removeUser } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 import './pagesCSS/MyProfile.css'
 import {
@@ -8,6 +8,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 function MyProfile(props) {
+
   const navigate = useNavigate();
   // FIX THIS: Implement remove user functionality
   const handleEditUser = (event) => {
@@ -19,10 +20,14 @@ function MyProfile(props) {
     event.preventDefault();
     const confirmDelete = window.confirm("Are you sure you want to delete your profile?");
     if (confirmDelete) {
-      // Remove user from localStorage
-      
+      // Delete user from localStorage
+      deleteUser(props.username)
+      // Remove user's data fields
+      removeUser();
       // Navigate to the home page.
       navigate("/");
+      // Refresh page
+      navigate(0);
     }
   };
 

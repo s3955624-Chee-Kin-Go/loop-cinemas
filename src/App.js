@@ -37,7 +37,7 @@ function App() {
               <Route path="/" element={<Home username={username} />} />
               <Route path="/sign-in" element={<SignIn loginUser={loginUser} />} />
               <Route path="/sign-up" element={<SignUp loginUser={loginUser} />} />
-              <Route path="/profile" element={<MyProfile username={username} email={email} password={password} />} />
+              <Route path="/profile" element={<MyProfile username={username} email={email} logoutUser={logoutUser}/>} />
               <Route path="/forum" element={<Forum username={username} />} />
             </Routes>
           </div>
