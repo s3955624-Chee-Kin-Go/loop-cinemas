@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font-montserrat: 'Montserrat', sans-serif;
+}
+
+.content{
+    font-family: var(--font-montserrat);
+    color: red;
+    background-color: black;
+    padding: 2em 10rem;
+}
+
+.new-post{
+    width: 100%;
+    height: 10em;
+}
+
+.forum-button{
+    background-color: red;
+    color: white;
+    margin-bottom: 0.5em;
+}
+
+.default-text{
+    color: white;
+}
