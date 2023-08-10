@@ -24,7 +24,7 @@ function Navbar(props) {
               <>
               <p>Welcome, {props.username}</p>
               <div className="box">
-                <Link className="" to="/sign-in" onClick={props.logoutUser}>Sign Out</Link>
+                <Link className="" to="/" onClick={props.logoutUser}>Sign Out</Link>
               </div>
               </>
           }

@@ -35,6 +35,14 @@ function SignUp(props) {
       setErrorMessage("Please enter a valid email address.");
       return;
     }
+    else if (fields.password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters long.");
+      return;
+    }
+    else if (!fields.password.match("/^[!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?]*$/</>")) {
+      setErrorMessage("Password must contain at least one special character.");
+      return;
+    }
 
     // add new user into localStorage
     addNewUser(fields.username, fields.email, fields.password);
