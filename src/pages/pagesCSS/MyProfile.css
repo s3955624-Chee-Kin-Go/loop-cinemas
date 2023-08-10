@@ -4,10 +4,27 @@
     --font-montserrat: 'Montserrat', sans-serif;
 }
 
-.profile{
+.profile {
+    display: flex;
     font-family: var(--font-montserrat);
     color: red;
     padding: 2em 10rem;
-    background-color:black;
+    background-color: black;
     overflow: hidden;
-}
+    flex-direction: column; 
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center; 
+  }
+  
+  .edit-icon {
+    margin-left: 2em; 
+    margin-bottom: 0.5rem;
+    margin-right: -0.5rem;
+  }
+  
+  .profile-info {
+    margin-top: 1rem; 
+  }
