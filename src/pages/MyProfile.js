@@ -10,12 +10,12 @@ import {
 function MyProfile(props) {
 
   const navigate = useNavigate();
-  // FIX THIS: Implement remove user functionality
+  // FIX THIS: Implement edit user functionality
   const handleEditUser = (event) => {
     event.preventDefault();
   };
 
-  // FIX THIS: Implement remove user functionality
+  // Implement remove user functionality
   const handleRemoveUser = (event) => {
     event.preventDefault();
     const confirmDelete = window.confirm("Are you sure you want to delete your profile?");
