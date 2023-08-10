@@ -31,15 +31,18 @@ function SignUp(props) {
       setErrorMessage("Please fill in all the required fields.");
       return;
     }
-    else if (!fields.email.includes("@") || !fields.email.endsWith(".com")) {
+    // Email Validation (checking if it includes @, ends with .com, and has a domain name)
+    else if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
       setErrorMessage("Please enter a valid email address.");
       return;
     }
+    // Password Validation (checking if it is at least 8 characters long)
     else if (fields.password.length < 8) {
       setErrorMessage("Password must be at least 8 characters long.");
       return;
     }
-    else if (!fields.password.match("/^[!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?]*$/</>")) {
+    // Password Validation (checking if it contains at least one special character)
+    else if (!fields.password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/)) {
       setErrorMessage("Password must contain at least one special character.");
       return;
     }
@@ -59,15 +62,6 @@ function SignUp(props) {
       navigate(0);
       return;
     }
-
-    // Reset password field to blank.
-    const temp = { ...fields };
-    temp.password = "";
-    setFields(temp);
-
-    // Set error message.
-    setErrorMessage("Email and / or password invalid, please try again.");
-
   }
 
   return (
