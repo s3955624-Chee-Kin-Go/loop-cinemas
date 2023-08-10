@@ -10,19 +10,24 @@ function Navbar(props) {
           <Link className="logo-link" to="/"><img className="img-style" alt="" src={logo}/></Link>
           {props.username !== null &&
               <>
-                <Link className="" to="/forum">Forum</Link>
-                <Link className="" to="/profile">Profile</Link>
-                {/*Link to Forum and Profile after successfully sign in*/}
+                <div className="other-pages">
+                  <Link className="" to="/forum">Forum</Link>
+                  {/*Link to Forum and Profile after successfully sign in*/}
+                </div>
+                <div className="other-pages">
+                  <Link className="" to="/profile">Profile</Link>
+                </div>
               </>
           }
           {props.username === null ?
             <div className="box">
             <Link className="" to="/sign-in">Sign In</Link>
           </div>
-              
               : 
               <>
-              <p>Welcome, {props.username}</p>
+              <div className="welcome-text">
+                <p>Welcome, {props.username}</p>
+              </div>
               <div className="box">
                 <Link className="" to="/" onClick={props.logoutUser}>Sign Out</Link>
               </div>
