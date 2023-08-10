@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./pagesCSS/Forum.css"
 
 // NOTE: The posts are not persistent and will be lost when the component unmounts.
 // Could store the posts in localStorage, within the parent component, in a context, etc...
@@ -31,33 +32,27 @@ function Forum(props) {
   }
 
   return (
-    <div>
+    <div className="content">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend>New Post</legend>
-          <div className="form-group">
-            <textarea name="post" id="post" className="form-control" rows="3"
+          <h2>New Post</h2>
+            <textarea name="post" id="post" className="new-post" rows="5"
               value={post} onChange={handleInputChange} />
-          </div>
           {errorMessage !== null &&
-            <div className="form-group">
               <span className="text-danger">{errorMessage}</span>
-            </div>
           }
-          <div className="form-group">
-            <input type="button" className="btn btn-danger mr-5" value="Cancel"
+            <input type="button" className="forum-button" value="Cancel"
               onClick={() => { setPost(""); setErrorMessage(null); }} />
-            <input type="submit" className="btn btn-primary" value="Post" />
-          </div>
+            <input type="submit" className="forum-button" value="Post" />
         </fieldset>
       </form>
 
-      <hr />
+      <hr/>
       <h1>Forum</h1>
       <div>
       {
         posts.length === 0 ?
-          <span className="text-muted">No posts have been submitted.</span>
+          <span className="default-text">No posts have been submitted.</span>
           :
           posts.map((x) =>
             <div className="border my-3 p-3" style={{ whiteSpace: "pre-wrap" }}>

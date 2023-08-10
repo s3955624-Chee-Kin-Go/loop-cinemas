@@ -4,22 +4,10 @@
     --font-montserrat: 'Montserrat', sans-serif;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: auto; 
-    overflow-x:hidden;
-    overflow-y:scroll;
-    background-color: black;
-}
-
-.section-title{
-    background-color: black;
+.profile{
     font-family: var(--font-montserrat);
-    font-weight: 600;
-    font-size: 25px;
-    margin-bottom: auto;
+    color: red;
+    padding: 2em 10rem;
+    background-color:black;
     overflow: hidden;
-    color: #E50815;
 }

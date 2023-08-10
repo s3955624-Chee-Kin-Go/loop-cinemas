@@ -4,11 +4,11 @@ import './pagesCSS/MyProfile.css'
 function MyProfile(props) {
   return (
     <>
-      <div className="section-title">
-        <h1>My Profile</h1>
+      <div className="profile">
+        <h2>My Profile</h2>
         Hello, {props.username}!
         {props.email !== null && <p>Email: {props.email} <br></br> 
-        Joined: {props.joined}</p>}
+        Joined: {props.signupDate}</p>} {/* Add function to save user's sign up date*/}
       </div>
     </>
   );

@@ -13,12 +13,6 @@ const Footer = () => {
     <footer className="footer-section">
         <div className='footer-row'>
             <div className='footer-column'>
-                <h3>MOVIES</h3>
-                <div className='footer-desc'>
-                    <a href=''><p>Upcoming Movie</p></a>
-                </div>
-            </div>
-            <div className='footer-column'>
                 <h3>LOCATION</h3>
                 <div className='footer-desc'>
                 <MDBAccordion>
