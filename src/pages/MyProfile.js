@@ -35,21 +35,23 @@ function MyProfile(props) {
 
   return (
     <>
-      <div className="profile">
+      <section className="profile-section">
+      <div className="profile-container">
         <div className="profile-header">
-          <h2>My Profile</h2>
-          <MDBBtn outline color="light" floating href='' role='button' className='edit-icon' onClick={handleEditUser}>
-            <MDBIcon far icon="edit" style={{fontSize:'1rem'}}/>
-          </MDBBtn>
-          <MDBBtn outline color="light" floating href='' role='button' className='edit-icon' onClick={handleRemoveUser}>
-             <MDBIcon far icon="trash-alt" style={{fontSize:'1rem'}}/>
-          </MDBBtn>
+          <h1>My Profile</h1>
+          <div className="edit-icons">
+            <MDBBtn outline color="light" floating href='' role='button' className='edit-icon' onClick={handleEditUser}>
+              <MDBIcon far icon="edit" style={{fontSize:'1rem'}}/>
+            </MDBBtn>
+            <MDBBtn outline color="light" floating href='' role='button' className='edit-icon' onClick={handleRemoveUser}>
+              <MDBIcon far icon="trash-alt" style={{fontSize:'1rem'}}/>
+            </MDBBtn>
+          </div>
         </div>
-        <div className="profile-info">
-          <h3>Hello, {props.username}!</h3>
-          {props.email !== null && <p>Email: {props.email} <br /> Joined: {props.signupDate}</p>}
-        </div>
+        <h4>Hello, {props.username}!</h4>
+        {props.email !== null && <p>Email: {props.email} <br /> Joined: {props.signupDate}</p>}
       </div>
+    </section>
     </>
   );
 }
