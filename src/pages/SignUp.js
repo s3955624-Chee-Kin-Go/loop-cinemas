@@ -10,7 +10,7 @@ function SignUp(props) {
 
   // constant variable for sign up date and its format
   const todayDate = new Date();
-  const dateFormat = {year: 'numeric', month: 'short', day: 'numeric' };
+  const dateFormat = {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 
   // Generic change handler.
   const handleInputChange = (event) => {
