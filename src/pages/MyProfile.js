@@ -44,7 +44,7 @@ function MyProfile(props) {
           </MDBBtn>
         </div>
         <div className="profile-info">
-          Hello, {props.username}!
+          <h3>Hello, {props.username}!</h3>
           {props.email !== null && <p>Email: {props.email} <br /> Joined: {props.signupDate}</p>}
         </div>
       </div>
