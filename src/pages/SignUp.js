@@ -6,6 +6,8 @@ import '../pages/pagesCSS/SignIn.css';
 function SignUp(props) {
   const [fields, setFields] = useState({ username: "", email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState(null);
+  const [emailErrorMessage, setEmailErrorMessage] = useState(null);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   // constant variable for sign up date and its format
@@ -30,26 +32,59 @@ function SignUp(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    var signUpError = false;
+
     // Check if username, email, and password are empty
     if (fields.username === "" || fields.email === "" || fields.password === "") {
       setErrorMessage("Please fill in all the required fields.");
-      return;
+      signUpError = true;
     }
+    else if (fields.username !== "" && fields.email !== "" && fields.password !== "" && errorMessage !== null) {
+      setErrorMessage(null);
+    }
+
     // Email Validation (checking if it includes @, ends with .com, and has a domain name)
-    else if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
-      setErrorMessage("Please enter a valid email address.");
-      return;
+    if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
+      setEmailErrorMessage("Please enter a valid email address.");
+      signUpError = true;
     }
+    else if (fields.email.includes("@") && fields.email.endsWith(".com") && fields.email.indexOf("@") !== fields.email.indexOf(".") - 1 && emailErrorMessage !== null) {
+      setEmailErrorMessage(null);
+    }
+
     // Password Validation (checking if it is at least 8 characters long)
-    else if (fields.password.length < 8) {
-      setErrorMessage("Password must be at least 8 characters long.");
-      return;
+    if (fields.password.length < 8) {
+      setPasswordErrorMessage("Password must be at least 8 characters long.");
+      signUpError = true;
     }
     // Password Validation (checking if it contains at least one special character)
     else if (!fields.password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/)) {
-      setErrorMessage("Password must contain at least one special character.");
+      setPasswordErrorMessage("Password must contain at least one special character.");
+      signUpError = true;
+    }
+    else if (fields.password.length > 8 && fields.password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/) && passwordErrorMessage !== null) {
+      setPasswordErrorMessage(null);
+    }
+
+    if (signUpError === true) {
       return;
     }
+
+    // // Email Validation (checking if it includes @, ends with .com, and has a domain name)
+    // else if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
+    //   setErrorMessage("Please enter a valid email address.");
+    //   return;
+    // }
+    // // Password Validation (checking if it is at least 8 characters long)
+    // else if (fields.password.length < 8) {
+    //   setErrorMessage("Password must be at least 8 characters long.");
+    //   return;
+    // }
+    // // Password Validation (checking if it contains at least one special character)
+    // else if (!fields.password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/)) {
+    //   setErrorMessage("Password must contain at least one special character.");
+    //   return;
+    // }
 
     // add new user into localStorage
     addNewUser(fields.username, fields.email, fields.password, todayDate.toLocaleDateString('en-GB', dateFormat));
@@ -84,11 +119,21 @@ function SignUp(props) {
                 <input type="email" name="email" id="email" required 
                   value={fields.email} onChange={handleInputChange} />
               </div>
+              {emailErrorMessage !== null &&
+                <div className="form-container">
+                  <span className="text-danger">{emailErrorMessage}</span>
+                </div>
+              }
               <div className="form-container">
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" 
                   value={fields.password} onChange={handleInputChange} required/>
               </div>
+              {passwordErrorMessage !== null &&
+                <div className="form-container">
+                  <span className="text-danger">{passwordErrorMessage}</span>
+                </div>
+              }
               <div className="form-container">
                   <input type="submit" className="btn submit-btn" value="SIGN UP" />
               </div>

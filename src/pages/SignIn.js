@@ -3,12 +3,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { verifyUser } from "../data/repository";
 import '../pages/pagesCSS/SignIn.css';
 
-/* FIX THIS: Provide visual cue upon successful login. The visual cue could be a text or a pop-up message.*/
-
-
 function SignIn(props) {
   const [fields, setFields] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState(null);
+  const [emailErrorMessage, setEmailErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   // Generic change handler.
@@ -28,14 +26,28 @@ function SignIn(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Check if username, username, and password are empty
+
+    var signInError = false;
+
+    // Check if email and password are empty
     if (fields.username === "" || fields.password === "") {
       setErrorMessage("Please fill in all the required fields.");
-      return;
+      signInError = true;
     }
+    else if (fields.username !== "" && fields.email !== "" && fields.password !== "" && errorMessage !== null) {
+      setErrorMessage(null);
+    }
+
     // Email Validation (checking if it includes @, ends with .com, and has a domain name)
-    else if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
-      setErrorMessage("Please enter a valid email address.");
+    if (!fields.email.includes("@") || !fields.email.endsWith(".com") || fields.email.indexOf("@") === fields.email.indexOf(".") - 1) {
+      setEmailErrorMessage("Please enter a valid email address.");
+      signInError = true;
+    }
+    else if (fields.email.includes("@") && fields.email.endsWith(".com") && fields.email.indexOf("@") !== fields.email.indexOf(".") - 1 && emailErrorMessage !== null) {
+      setEmailErrorMessage(null);
+    }
+
+    if (signInError === true) {
       return;
     }
 
@@ -72,6 +84,11 @@ function SignIn(props) {
                 <input name="email" id="email" 
                   value={fields.email} onChange={handleInputChange} />
               </div>
+              {emailErrorMessage !== null &&
+                <div className="form-container">
+                  <span className="text-danger">{emailErrorMessage}</span>
+                </div>
+              }
               <div className="form-container">
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" 
