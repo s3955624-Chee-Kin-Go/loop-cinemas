@@ -16,13 +16,13 @@ function initUsers() {
       username: "mbolger",
       email: "mbolger@email.com",
       password: "abc123",
-      signupDate: "3 Mar 2023"
+      signupDate: "Fri, 3 Mar 2023"
     },
     {
       username: "shekhar",
       email: "shekhar@email.com",
       password: "def456",
-      signupDate: "31 Jan 2023"
+      signupDate: "Tue, 31 Jan 2023"
     }
   ];
 
