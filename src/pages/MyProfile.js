@@ -24,6 +24,8 @@ function MyProfile(props) {
       deleteUser(props.username)
       // Remove user's data fields
       removeUser();
+      // Visual cue for alerting user profile is deleted
+      alert("Your profile is now deleted!");
       // Navigate to the home page.
       navigate("/");
       // Refresh page
