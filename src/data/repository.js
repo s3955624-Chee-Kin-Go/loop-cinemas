@@ -2,6 +2,7 @@ const USERS_KEY = "users";
 const USER_KEY = "user";
 const USEREMAIL_KEY = "email";
 const USERPASSWORD_KEY = "password";
+const USERSIGNUPDATE_KEY = "signupDate";
 
 // Initialise local storage "users" with data, if the data is already set this function returns immediately.
 function initUsers() {
@@ -39,12 +40,13 @@ function getUsers() {
 }
 
 // Add newly signed-up user's name, email, password into local storage
-function addNewUser(newUsername, newEmail, newPassword) {
+function addNewUser(newUsername, newEmail, newPassword, newSignupDate) {
   const users = getUsers();
   users.push({
     username: newUsername,
     email: newEmail,
-    password: newPassword
+    password: newPassword,
+    signupDate: newSignupDate
   });
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
@@ -56,7 +58,7 @@ function verifyUser(email, password) {
   for(const user of users) {
     if(email === user.email && password === user.password)
     {
-      setUser(user.username, user.email, user.password);
+      setUser(user.username, user.email, user.password, user.signupDate);
       return true;
     }
   }
@@ -81,10 +83,11 @@ function deleteUser(currUsername) {
 }
 
 // Set signed-in user's individual data fields into local storage
-function setUser(username, email, password) {
+function setUser(username, email, password, signupDate) {
   localStorage.setItem(USER_KEY, username);
   localStorage.setItem(USEREMAIL_KEY, email);
   localStorage.setItem(USERPASSWORD_KEY, password);
+  localStorage.setItem(USERSIGNUPDATE_KEY, signupDate);
 }
 
 // Get signed-in user's username field from local storage
@@ -102,11 +105,17 @@ function getPassword() {
   return localStorage.getItem(USERPASSWORD_KEY);
 }
 
+// Get signed-in user's sign up date field from local storage
+function getSignUpDate() {
+  return localStorage.getItem(USERSIGNUPDATE_KEY);
+}
+
 // Delete all signed-in user's individual data field in local storage
 function removeUser() {
   localStorage.removeItem(USER_KEY);
   localStorage.removeItem(USEREMAIL_KEY);
   localStorage.removeItem(USERPASSWORD_KEY);
+  localStorage.removeItem(USERSIGNUPDATE_KEY);
 }
 
 export {
@@ -117,5 +126,6 @@ export {
   getUser,
   getEmail,
   getPassword,
+  getSignUpDate,
   removeUser
 }

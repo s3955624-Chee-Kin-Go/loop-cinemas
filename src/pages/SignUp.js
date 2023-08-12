@@ -8,6 +8,10 @@ function SignUp(props) {
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
+  // constant variable for sign up date and its format
+  const todayDate = new Date();
+  const dateFormat = {year: 'numeric', month: 'short', day: 'numeric' };
+
   // Generic change handler.
   const handleInputChange = (event) => {
     const name = event.target.name;
@@ -48,7 +52,7 @@ function SignUp(props) {
     }
 
     // add new user into localStorage
-    addNewUser(fields.username, fields.email, fields.password);
+    addNewUser(fields.username, fields.email, fields.password, todayDate.toLocaleDateString('en-GB', dateFormat));
 
     const verified = verifyUser(fields.email, fields.password);
     
