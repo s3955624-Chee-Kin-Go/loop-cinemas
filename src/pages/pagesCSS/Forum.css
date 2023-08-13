@@ -25,3 +25,9 @@
 .default-text{
     color: white;
 }
+
+.post{
+    border: 1px solid white;
+    padding: 1rem;
+    color: red;
+}

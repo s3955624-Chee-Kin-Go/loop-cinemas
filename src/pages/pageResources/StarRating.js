@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./pagesCSS/Forum.css"
+import "./StarRating.css"
 import { FaStar} from 'react-icons/fa'
 
 function StarRating() {
@@ -24,6 +24,7 @@ function StarRating() {
             );
           })}
         </div>
+          <p>Your rating for the movie is {rating} star</p>
       </>
     );
   }
