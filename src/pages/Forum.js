@@ -26,6 +26,14 @@ function Forum(props) {
       setErrorMessage("A post cannot be empty.");
       return;
     }
+    else if(postTrimmed.length > 250) {
+      setErrorMessage("The post has exceeded the maximum length of 250 characters.");
+      return;
+    }
+    else if(rating < 1 || rating > 5){
+      setErrorMessage("Please select a rating.");
+      return;
+    }
 
     // Create post.
     // addNewReview(props.username, title, rating, postTrimmed);
