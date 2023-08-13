@@ -54,7 +54,7 @@ function addNewUser(newUsername, newEmail, newPassword, newSignupDate) {
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
 
-// Add newly signed-up user's name, email, password into local storage
+// update user's name and email into local storage
 function updateUser(updatedUsername, updatedEmail, userIndex) {
   const users = getUsers();
 
