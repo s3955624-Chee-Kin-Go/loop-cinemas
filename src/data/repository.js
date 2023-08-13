@@ -40,7 +40,7 @@ function initReviews() {
   if(localStorage.getItem(REVIEWS_KEY) !== null)
     return;
 
-  // Hard-coded user data, passwords are in plain-text.
+  // Hard-coded review data, passwords are in plain-text.
   const reviews = [
     {
       username: "mbolger",
