@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { initUsers } from "./data/repository";
+import { initUsers, initReviews } from "./data/repository";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -9,6 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // Initialise local storage data.
 initUsers();
+initReviews();
 
 ReactDOM.render(
   <React.StrictMode>

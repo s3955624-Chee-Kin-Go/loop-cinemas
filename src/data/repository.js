@@ -5,6 +5,9 @@ const USEREMAIL_KEY = "email";
 const USERPASSWORD_KEY = "password";
 const USERSIGNUPDATE_KEY = "signupDate";
 
+const REVIEWS_KEY = "reviews";
+
+
 // Initialise local storage "users" with data, if the data is already set this function returns immediately.
 function initUsers() {
   // Stop if data is already initialised.
@@ -29,6 +32,26 @@ function initUsers() {
 
   // Set data into local storage.
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+// Initialise local storage "reviews" with data, if the data is already set this function returns immediately.
+function initReviews() {
+  // Stop if data is already initialised.
+  if(localStorage.getItem(REVIEWS_KEY) !== null)
+    return;
+
+  // Hard-coded user data, passwords are in plain-text.
+  const reviews = [
+    {
+      username: "mbolger",
+      movie: "Barbie",
+      rating: "5",
+      comment: "This movie is awesome!"
+    }
+  ];
+
+  // Set data into local storage.
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
 // Get the users array from local storage
@@ -145,6 +168,7 @@ function removeUser() {
 
 export {
   initUsers,
+  initReviews,
   verifyUser,
   addNewUser,
   updateUser,
