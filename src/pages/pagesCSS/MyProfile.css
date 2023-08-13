@@ -8,6 +8,7 @@
   margin: 0;
   padding: 5rem 10rem;
   background-color: black;
+  height: 50vh;
 }
 
 .profile-header{
@@ -29,6 +30,8 @@
 .profile-container h1{
   font-family: var(--font-montserrat);
   color: red;
+  font-weight: 600;
+  font-size: 32px;
   margin-left: -2px;
 }
 

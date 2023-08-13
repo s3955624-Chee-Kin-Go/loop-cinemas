@@ -1,4 +1,5 @@
 const USERS_KEY = "users";
+const USERINDEX_KEY = "index";
 const USER_KEY = "user";
 const USEREMAIL_KEY = "email";
 const USERPASSWORD_KEY = "password";
@@ -42,13 +43,30 @@ function getUsers() {
 // Add newly signed-up user's name, email, password into local storage
 function addNewUser(newUsername, newEmail, newPassword, newSignupDate) {
   const users = getUsers();
+
   users.push({
     username: newUsername,
     email: newEmail,
     password: newPassword,
     signupDate: newSignupDate
   });
+
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+// Add newly signed-up user's name, email, password into local storage
+function updateUser(updatedUsername, updatedEmail, userIndex) {
+  const users = getUsers();
+
+  // Modify username and email to the updated value
+  users[userIndex].username = updatedUsername
+  users[userIndex].email = updatedEmail
+  
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+  // Update user's username and email key value in local storage
+  localStorage.setItem(USER_KEY, updatedUsername);
+  localStorage.setItem(USEREMAIL_KEY, updatedEmail);
 }
 
 // NOTE: In this example the login is also persistent as it is stored in local storage.
@@ -58,7 +76,7 @@ function verifyUser(email, password) {
   for(const user of users) {
     if(email === user.email && password === user.password)
     {
-      setUser(user.username, user.email, user.password, user.signupDate);
+      setUser(user.username, user.email, user.password, user.signupDate, users.indexOf(user));
       return true;
     }
   }
@@ -83,11 +101,12 @@ function deleteUser(currUsername) {
 }
 
 // Set signed-in user's individual data fields into local storage
-function setUser(username, email, password, signupDate) {
+function setUser(username, email, password, signupDate, index) {
   localStorage.setItem(USER_KEY, username);
   localStorage.setItem(USEREMAIL_KEY, email);
   localStorage.setItem(USERPASSWORD_KEY, password);
   localStorage.setItem(USERSIGNUPDATE_KEY, signupDate);
+  localStorage.setItem(USERINDEX_KEY, index);
 }
 
 // Get signed-in user's username field from local storage
@@ -110,22 +129,30 @@ function getSignUpDate() {
   return localStorage.getItem(USERSIGNUPDATE_KEY);
 }
 
+// Get signed-in user's sign up date field from local storage
+function getIndex() {
+  return localStorage.getItem(USERINDEX_KEY);
+}
+
 // Delete all signed-in user's individual data field in local storage
 function removeUser() {
   localStorage.removeItem(USER_KEY);
   localStorage.removeItem(USEREMAIL_KEY);
   localStorage.removeItem(USERPASSWORD_KEY);
   localStorage.removeItem(USERSIGNUPDATE_KEY);
+  localStorage.removeItem(USERINDEX_KEY);
 }
 
 export {
   initUsers,
   verifyUser,
   addNewUser,
+  updateUser,
   deleteUser,
   getUser,
   getEmail,
   getPassword,
   getSignUpDate,
+  getIndex,
   removeUser
 }
