@@ -13,13 +13,17 @@ import "./StarRating.css"
 import { FaStar} from 'react-icons/fa'
 
 
-function MovieCard({imageUrl, title, text, type, props, handleReviewSubmit, handleInputChange, errorMessage, post }) {
+function MovieCard({ imageUrl, title, text, type, handleSubmit, handleInputChange, errorMessage, post }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
   const [MovieModal, setMovieModal] = useState(false);
   const [ReviewModal, setReviewModal] = useState(false);
   const toggleShowMovie = () => setMovieModal(!MovieModal);
   const toggleShowReview = () => setReviewModal(!ReviewModal);
+
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
 
   if (type === "movie") {
     return (
@@ -104,6 +108,7 @@ function MovieCard({imageUrl, title, text, type, props, handleReviewSubmit, hand
                       color={currRating <= (hover || rating) ? "red" : "white"}
                       onMouseEnter={() => setHover(currRating)}
                       onMouseLeave={() => setHover(null)}
+                      onClick={() => handleRatingChange(currRating)}
                     />
                   </label>
                 );
@@ -111,12 +116,15 @@ function MovieCard({imageUrl, title, text, type, props, handleReviewSubmit, hand
             </div>
               <p>Your rating for the movie is {rating} star</p>
                 <h3 style={{color:"red"}}>New Post</h3>
-                <form onSubmit={handleReviewSubmit}>                  
+                <form onSubmit={handleSubmit}>                  
                   <fieldset>
                     <textarea name="post" id="post" className="new-post" rows="5" value={post} onChange={handleInputChange}/>
                     {errorMessage !== null && (<span className="text-danger">{errorMessage}</span>)}
                     <input type="button" className="forum-button" value="Cancel" onClick={toggleShowReview}/>
-                    <input type="submit" className="forum-button" value="Post"/>
+                    <input type="submit" className="forum-button" value="Post" onClick={(event) => handleSubmit(event, rating, title)}/>
+                    <p>Sending title: {title}</p>
+                    <p>Sending post: {post}</p>
+                    <p>Sending rating: {rating}</p>
                   </fieldset>
                 </form>
                 <div style={{marginLeft:"15px"}}>

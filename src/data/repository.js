@@ -54,6 +54,27 @@ function initReviews() {
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
+function getReviews() {
+  // Extract user data from local storage.
+  const data = localStorage.getItem(REVIEWS_KEY);
+
+  // Convert data to objects.
+  return JSON.parse(data);
+}
+
+// Add newly signed-up user's name, email, password into local storage
+function addNewReview(newUsername, newMovie, newRating, newComment) {
+  const review = getReviews();
+  review.push({
+    username: newUsername,
+    movie: newMovie,
+    rating: newRating,
+    comment: newComment
+  });
+
+  localStorage.setItem(USERS_KEY, JSON.stringify(review));
+}
+
 // Get the users array from local storage
 function getUsers() {
   // Extract user data from local storage.
