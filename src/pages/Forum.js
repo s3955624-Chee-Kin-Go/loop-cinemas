@@ -49,7 +49,7 @@ function Forum(props) {
     const postTrimmed = post.trim();
 
     if (postTrimmed === "") {
-      setErrorMessage("A post cannot be empty.");
+      setErrorMessage("Your ratings and/or comment cannot be empty.");
       return;
     }
     else if(postTrimmed.length > 250) {
