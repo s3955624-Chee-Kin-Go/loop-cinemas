@@ -114,13 +114,13 @@ function MovieCard({ imageUrl, title, text, type, handleSubmit, handleInputChang
               })}
             </div>
               <p>Your rating for the movie is {rating} star</p>
-                <h3 style={{color:"red"}}>New Post</h3>
+                <h3 style={{color:"red", fontFamily: "var(--font-montserrat)", fontSize: "28px", fontWeight: "600"}}>Your Comment</h3>
                 <form onSubmit={handleSubmit}>                  
                   <fieldset>
                     <textarea name="post" id="post" className="new-post" rows="5" value={post} onChange={handleInputChange}/>
                     {errorMessage !== null && (<span className="text-danger">{errorMessage}</span>)}
-                    <input type="button" className="forum-button" value="Cancel" onClick={toggleShowReview}/>
-                    <input type="submit" className="forum-button" value="Post" onClick={(event) => handleSubmit(event, rating, title)}/>
+                    <input type="submit" className="btn submit-btn" value="POST" style ={{marginRight:"1rem"}} onClick={(event) => handleSubmit(event, rating, title)}/>
+                    <input type="button" className="btn submit-btn" value="CANCEL" onClick={toggleShowReview}/>
                   </fieldset>
                 </form>
                 <div style={{marginLeft:"15px"}}>
