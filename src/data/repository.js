@@ -75,6 +75,21 @@ function addNewReview(username, movie, rating, comment) {
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
+// update user's name and email into local storage
+function editReview(newComment, newRating, postIndex) {
+  const reviews = getReviews();
+
+  for(const review of reviews) {
+    if (reviews.indexOf(review) === postIndex) {
+      reviews[postIndex].rating = newComment;
+      reviews[postIndex].comment = newRating;    
+      break;
+    }
+  }
+
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+}
+
 // Remove post from local storage
 function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
   const reviews = getReviews();
@@ -220,6 +235,7 @@ export {
   initReviews,
   getReviews,
   addNewReview,
+  editReview,
   deleteReview,
   verifyUser,
   addNewUser,

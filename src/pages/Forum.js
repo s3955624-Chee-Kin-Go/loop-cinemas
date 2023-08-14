@@ -2,8 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./pagesCSS/Forum.css"
 import { useNavigate } from "react-router-dom";
 import MovieCard from './pageResources/MovieCard';
-import { initReviews, addNewReview, getReviews, deleteReview} from "../data/repository";
-import { MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
+import { initReviews, addNewReview, getReviews, editReview, deleteReview} from "../data/repository";
+import {
+  MDBIcon,
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalBody
+} from 'mdb-react-ui-kit';
+import { FaStar} from 'react-icons/fa'
 
 // NOTE: The posts are not persistent and will be lost when the component unmounts.
 // Could store the posts in localStorage, within the parent component, in a context, etc...
@@ -12,6 +20,39 @@ function Forum(props) {
   const [post, setPost] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [posts, setPosts] = useState([]); // Store posts in state
+  const [selectedPostIndex, setSelectedPostIndex] = useState(null);
+  const [EditReviewModal, setEditReviewModal] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(null);
+
+  const showForum = (index) => {
+    setSelectedPostIndex(index);
+    setEditReviewModal(true);
+  };  
+
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
+
+
+  // Implement remove user functionality
+  const handleEditPost = (event, newPost, newRating, postIndex) => {
+    console.log("POST INDEX: " + postIndex);
+    console.log("NEW POST: " + newPost);
+    console.log("NEW RATING: " + newRating);
+    event.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to edit your post?");
+    if (confirmDelete) {
+      // Delete user from localStorage
+      editReview(newPost, newRating, postIndex)
+      // Visual cue for alerting user profile is deleted
+      alert("Your post is now edited!"); 
+      // Navigate to the home page.
+      navigate("/forum");
+      // Refresh page
+      navigate(0);
+    }
+  };
 
   // Implement remove user functionality
   const handleRemovePost = (event, title, rating, postTrimmed) => {
@@ -167,15 +208,20 @@ function Forum(props) {
             posts.length === 0 ?
               <span style={{color: "white"}}>No posts have been submitted.</span>
               :
-              posts.map((x) =>
+              posts.map((x, index) =>
               <div className="post-box">
                 <div className="title">                
                   <h3 style={{color: "red"}}>{x.username} ({x.movie})</h3>
                   { 
                     x.username === props.username && (
-                      <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={(event) => handleRemovePost(event, x.movie, x.rating, x.comment)}>
-                        <MDBIcon far icon="trash-alt" style={{fontSize: '1rem'}}/>
-                      </MDBBtn>
+                      <div>
+                        <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={() => showForum(index)}>
+                          <MDBIcon far icon="edit" style={{fontSize: '1rem'}}/>
+                        </MDBBtn>
+                        <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={(event) => handleRemovePost(event, x.movie, x.rating, x.comment)}>
+                          <MDBIcon far icon="trash-alt" style={{fontSize: '1rem'}}/>
+                        </MDBBtn>
+                      </div>
                     )
                   }
                 </div>
@@ -188,6 +234,56 @@ function Forum(props) {
           }
         </div>
       </div>
+      <MDBModal show={EditReviewModal} setShow={setEditReviewModal} tabIndex="-1" centered>
+        <MDBModalDialog centered style={{ maxWidth: "35%" }} size="lg">
+          <MDBModalContent style={{cbackgroundColor: "black", border: "2px solid #E50815", borderRadius: "0px"}}>
+            <MDBModalBody style={{padding: "0"}}>
+              <section className="signin-section" style={{padding: "0"}}>
+                <div className="signin-container" style={{margin: "0", width: "auto", border: "none", borderRadius: "0px"}}>
+                  <h1>Edit Post</h1>
+                  <div className="signin-row">
+                    <form onSubmit={(event) => handleEditPost(event, rating, post, selectedPostIndex)}>
+                      <div className="form-container">
+                        <div className="star-rating">
+                          {[...Array(5)].map((item, index) => {
+                            const currRating = index + 1;
+                            return (
+                              <label key={index} onMouseEnter={() => setRating(currRating)}>
+                                <input type="radio" value={currRating} onClick={() => setRating(currRating)} />
+                                <FaStar
+                                  className="star"
+                                  size={40}
+                                  color={currRating <= (hover || rating) ? "red" : "white"}
+                                  onMouseEnter={() => setHover(currRating)}
+                                  onMouseLeave={() => setHover(null)}
+                                  onClick={() => handleRatingChange(currRating)}
+                                />
+                              </label>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <div className="form-container">
+                        <label htmlFor="email">Comment</label>
+                        <textarea name="post" id="post" className="new-post" rows="5" value={post} onChange={handleInputChange}/>
+                      </div>
+                      <div className="form-container">
+                        <input type="submit" className="btn submit-btn" value="UPDATE" style={{marginRight: "1rem"}} onClick={(event) => handleEditPost(event, rating, post, selectedPostIndex)}/>
+                        <input type="button" className="btn submit-btn" onClick={() => setEditReviewModal(false)} value="CANCEL"/>
+                      </div>
+                      {errorMessage !== null && (
+                        <div className="form-container">
+                          <span className="text-danger">{errorMessage}</span>
+                        </div>
+                      )}
+                    </form>
+                  </div>
+                </div>
+              </section>
+            </MDBModalBody>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
     </>
   );
 }
