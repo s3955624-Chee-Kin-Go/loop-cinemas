@@ -12,7 +12,6 @@ import {
 import "./StarRating.css"
 import { FaStar} from 'react-icons/fa'
 
-
 function MovieCard({ imageUrl, title, text, type, handleSubmit, handleInputChange, errorMessage, post }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);

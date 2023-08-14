@@ -9,20 +9,15 @@ import {
   MDBModal,
   MDBModalDialog,
   MDBModalContent,
-  MDBModalTitle,
   MDBModalBody
 } from 'mdb-react-ui-kit';
 
 function MyProfile(props) {
-
   const navigate = useNavigate();
-
   const [fields, setFields] = useState({ username: (props.username), email: (props.email)});
   const [errorMessage, setErrorMessage] = useState(null);
   const [emailErrorMessage, setEmailErrorMessage] = useState(null);
-
   const [EditProfileModal, setEditProfileModal] = useState(false);
-
   const toggleShow = () => setEditProfileModal(!EditProfileModal);
 
   // Implement remove user functionality

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./pagesCSS/Forum.css"
 import { useNavigate } from "react-router-dom";
 import MovieCard from './pageResources/MovieCard';
-import { initReviews, addNewReview, getReviews} from "../data/repository";
+import { initReviews, addNewReview, getReviews, deleteReview} from "../data/repository";
+import { MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
 
 // NOTE: The posts are not persistent and will be lost when the component unmounts.
 // Could store the posts in localStorage, within the parent component, in a context, etc...
@@ -12,6 +13,25 @@ function Forum(props) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [posts, setPosts] = useState([]); // Store posts in state
 
+  // Implement remove user functionality
+  const handleRemovePost = (event, title, rating, postTrimmed) => {
+    event.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete your post?");
+    if (confirmDelete) {
+      // Delete user from localStorage
+      deleteReview(props.username, title, rating, postTrimmed)
+      // Visual cue for alerting user profile is deleted
+      alert("Your post is now deleted!");
+      // Navigate to the home page.
+      navigate("/forum");
+      // Refresh page
+      navigate(0);
+    }
+  };
+
+  // When the component is first loaded, the code checks if there's any review data stored. 
+  // Then the code fetches the reviews data from the storage. 
+  // Next it updates the posts state with the fetched reviews and the component re-render, displaying the reviews on the page.
   useEffect(() => {
     initReviews();
     const reviews = getReviews();
@@ -55,7 +75,7 @@ function Forum(props) {
 
   return (
     <>
-    <h1 className="section-title">Forum</h1>
+    <h1 className="section-title">Select A Movie To Leave A Review</h1>
     <section className="movie-section">
         <div className='movie-row'>
           <div className='movie-column'>
@@ -148,11 +168,18 @@ function Forum(props) {
               <span style={{color: "white"}}>No posts have been submitted.</span>
               :
               posts.map((x) =>
-                <div className="post">
+              <div className="post-box">
+                <div className="title">                
                   <h3 style={{color: "red"}}>{x.username} ({x.movie})</h3>
-                  <p style={{color: "white"}}>Movie Rating: {x.rating} star</p>
-                  <p style={{color: "white"}}>{x.comment}</p>
+                  <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={(event) => handleRemovePost(event, x.movie, x.rating, x.comment)}>
+                    <MDBIcon far icon="trash-alt" style={{fontSize: '1rem'}}/>
+                  </MDBBtn>  
                 </div>
+                <div className="post-content">
+                  <p>Movie Rating: {x.rating} star</p>
+                  <p>{x.comment}</p>
+                </div>
+              </div>
               )
           }
         </div>

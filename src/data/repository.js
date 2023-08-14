@@ -42,12 +42,12 @@ function initReviews() {
 
   // Hard-coded review data, passwords are in plain-text.
   const reviews = [
-    {
+    /*{
       username: "mbolger",
       movie: "Barbie",
       rating: "5",
       comment: "This movie is awesome!"
-    }
+    }*/
   ];
 
   // Set data into local storage.
@@ -55,22 +55,38 @@ function initReviews() {
 }
 
 function getReviews() {
-  // Extract user data from local storage.
+  // Extract reviews from local storage.
   const data = localStorage.getItem(REVIEWS_KEY);
 
   // Convert data to objects.
   return JSON.parse(data);
 }
 
-// Add newly signed-up user's name, email, password into local storage
-function addNewReview(newUsername, newMovie, newRating, newComment) {
+// Add user's post into local storage including the username, movie title, rating and comment
+function addNewReview(username, movie, rating, comment) {
   const reviews = getReviews();
   reviews.push({
-    username: newUsername,
-    movie: newMovie,
-    rating: newRating,
-    comment: newComment
+    username: username,
+    movie: movie,
+    rating: rating,
+    comment: comment
   });
+
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+}
+
+// Remove post from local storage
+function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
+  const reviews = getReviews();
+
+  for(const review of reviews) {
+    if(currUsername === review.username && currMovieTitle === review.movie && currRating === review.rating && currComment === review.comment)
+    {
+      const postIndex = reviews.indexOf(review);
+      reviews.splice(postIndex, 1);
+      break;
+    }
+  }
 
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
@@ -192,6 +208,7 @@ export {
   initReviews,
   getReviews,
   addNewReview,
+  deleteReview,
   verifyUser,
   addNewUser,
   updateUser,

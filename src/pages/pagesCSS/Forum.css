@@ -26,8 +26,21 @@
     color: white;
 }
 
-.post{
+.post-box {
     border: 1px solid white;
+    margin-bottom: 1rem;
     padding: 1rem;
     color: red;
+  }
+
+.title{
+    display: flex;
+}
+
+.forum-delete-icon {
+    margin-left: 1rem;
+}
+
+.post-content {
+    color: white;
 }

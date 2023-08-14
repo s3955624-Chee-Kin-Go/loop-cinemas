@@ -31,7 +31,6 @@ function MovieCard({imageUrl, title, text}) {
         </div>
       </div>
     </MDBCard>
-
     <MDBModal show={MovieModal} setShow={setMovieModal} tabIndex="-1">
       <MDBModalDialog>
         <MDBModalContent style={{ backgroundColor: 'black', border: "2px solid white", width: "730px", height:"auto"}}>
@@ -54,7 +53,6 @@ function MovieCard({imageUrl, title, text}) {
                     <li>6:00pm</li>
                   </ul>
                 </div>
-                
               </div>
               <div style={{marginLeft:"15px"}}>
               <MDBBtn
@@ -62,15 +60,9 @@ function MovieCard({imageUrl, title, text}) {
               color="none"
               onClick={toggleShow}
               style={{backgroundColor: "white"}}>
-
               </MDBBtn>
               </div>
-              
-              
             </div>
-            
-           
-          
           </MDBModalBody>
         </MDBModalContent>
       </MDBModalDialog>
