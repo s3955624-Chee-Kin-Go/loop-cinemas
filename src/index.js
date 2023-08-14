@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { initUsers, initReviews } from "./data/repository";
+import { initMovies, initUsers, initReviews } from "./data/repository";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // Initialise local storage data.
+initMovies();
 initUsers();
 initReviews();
 

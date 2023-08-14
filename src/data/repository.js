@@ -1,3 +1,14 @@
+import BarbiePoster from '../movie_posters/barbie.jpeg';
+import OppenheimerPoster from '../movie_posters/oppenheimer.jpeg';
+import MissionImpossiblePoster from '../movie_posters/mission_impossible.jpeg';
+import TheMoonPoster from '../movie_posters/the_moon.jpeg';
+import TheMarvelsPoster from '../movie_posters/the_marvels.jpeg';
+import WonkaPoster from '../movie_posters/wonka.jpeg';
+import ConcreteUtopiaPoster from '../movie_posters/concrete_utopia.jpeg';
+import DunePartTwoPoster from '../movie_posters/dune_part_two.jpeg';
+
+
+const MOVIES_KEY = "movies";
 const USERS_KEY = "users";
 const USERINDEX_KEY = "index";
 const USER_KEY = "user";
@@ -7,6 +18,58 @@ const USERSIGNUPDATE_KEY = "signupDate";
 
 const REVIEWS_KEY = "reviews";
 
+function initMovies() {
+  // Stop if data is already initialised.
+  if(localStorage.getItem(MOVIES_KEY) !== null)
+    return;
+
+  // Hard-coded movie data
+  const movies = [
+    {
+      title: "Barbie",
+      imageURL: [BarbiePoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    },
+    {
+      title: "Oppenheimer",
+      imageURL: [OppenheimerPoster],
+      sessionTime: ["11:25am", "1:00pm", "2:45pm", "5:00pm", "6:30pm", "7:00pm"]
+    },
+    {
+      title: "Mission: Impossible - Dead Reckoning Part 1",
+      imageURL: [MissionImpossiblePoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    },
+    {
+      title: "The Moon",
+      imageURL: [TheMoonPoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    },
+    {
+      title: "The Marvels",
+      imageURL: [TheMarvelsPoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    },
+    {
+      title: "Wonka",
+      imageURL: [WonkaPoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    },
+    {
+      title: "Concrete Utopia",
+      imageURL: [ConcreteUtopiaPoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    },
+    {
+      title: "une Part Two",
+      imageURL: [DunePartTwoPoster],
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+    }
+  ];
+
+  // Set data into local storage.
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
+}
 
 // Initialise local storage "users" with data, if the data is already set this function returns immediately.
 function initUsers() {
@@ -32,6 +95,15 @@ function initUsers() {
 
   // Set data into local storage.
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+// Get the movies array from local storage
+function getMovies() {
+  // Extract movie data from local storage.
+  const data = localStorage.getItem(MOVIES_KEY);
+
+  // Convert data to objects.
+  return JSON.parse(data);
 }
 
 // Initialise local storage "reviews" with data, if the data is already set this function returns immediately.
@@ -241,8 +313,10 @@ function removeUser() {
 }
 
 export {
+  initMovies,
   initUsers,
   initReviews,
+  getMovies,
   getReviews,
   addNewReview,
   editReview,
