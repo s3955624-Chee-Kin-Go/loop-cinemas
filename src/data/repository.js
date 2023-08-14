@@ -40,17 +40,10 @@ function initReviews() {
   if(localStorage.getItem(REVIEWS_KEY) !== null)
     return;
 
-  // Hard-coded review data are in plain-text.
-  const reviews = [
-    /*{
-      username: "mbolger",
-      movie: "Barbie",
-      rating: "5",
-      comment: "This movie is awesome!"
-    }*/
-  ];
+  // Create reviews array
+  const reviews = [];
 
-  // Set data into local storage.
+  // Set reviews array into local storage.
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
@@ -72,6 +65,7 @@ function addNewReview(username, movie, rating, comment) {
     comment: comment
   });
 
+  // Set reviews array into local storage.
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
@@ -87,6 +81,7 @@ function editReview(newComment, newRating, postIndex) {
     }
   }
 
+  // Set reviews array into local storage.
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
@@ -103,6 +98,7 @@ function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
     }
   }
 
+  // Set reviews array into local storage.
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
@@ -126,6 +122,7 @@ function addNewUser(newUsername, newEmail, newPassword, newSignupDate) {
     signupDate: newSignupDate
   });
 
+  // Update users array into local storage.
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
 
@@ -138,25 +135,25 @@ function updateUser(updatedUsername, updatedEmail, userIndex) {
   users[userIndex].username = updatedUsername;
   users[userIndex].email = updatedEmail;
   
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
-
   // Modify username for reviews
   for(const review of reviews) {
     if(getUser() === review.username)
     {
       review.username = updatedUsername;
-      break;
     }
   }
 
-  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  // Update reviews array with updated username
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
 
   // Update user's username and email key value in local storage
   localStorage.setItem(USER_KEY, updatedUsername);
   localStorage.setItem(USEREMAIL_KEY, updatedEmail);
+
+  // Update reviews array with updated username
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
-// NOTE: In this example the login is also persistent as it is stored in local storage.
 // Verify the user email and password by comparing with user data stored in local storage
 function verifyUser(email, password) {
   const users = getUsers();
@@ -171,10 +168,12 @@ function verifyUser(email, password) {
   return false;
 }
 
-// Remove user from local storage
+// Remove user and user's reviews from local storage
 function deleteUser(currUsername) {
   const users = getUsers();
+  const reviews = getReviews();
 
+  // Delete user profile
   for(const user of users) {
     if(currUsername === user.username)
     {
@@ -184,7 +183,18 @@ function deleteUser(currUsername) {
     }
   }
 
+  // Delete user's reviews
+  for (var reviewIndex = reviews.length - 1; reviewIndex >= 0; --reviewIndex) {
+    if (reviews[reviewIndex].username === currUsername) {
+      reviews.splice(reviewIndex,1);
+    }
+  }
+
+  // Update users array with updated username
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  
+  // Update reviews array with updated username
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
 // Set signed-in user's individual data fields into local storage
