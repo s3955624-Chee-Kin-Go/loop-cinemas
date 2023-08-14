@@ -117,12 +117,24 @@ function addNewUser(newUsername, newEmail, newPassword, newSignupDate) {
 // update user's name and email into local storage
 function updateUser(updatedUsername, updatedEmail, userIndex) {
   const users = getUsers();
+  const reviews = getReviews();
 
   // Modify username and email to the updated value
-  users[userIndex].username = updatedUsername
-  users[userIndex].email = updatedEmail
+  users[userIndex].username = updatedUsername;
+  users[userIndex].email = updatedEmail;
   
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+  // Modify username for reviews
+  for(const review of reviews) {
+    if(getUser() === review.username)
+    {
+      review.username = updatedUsername;
+      break;
+    }
+  }
+
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 
   // Update user's username and email key value in local storage
   localStorage.setItem(USER_KEY, updatedUsername);
