@@ -171,9 +171,13 @@ function Forum(props) {
               <div className="post-box">
                 <div className="title">                
                   <h3 style={{color: "red"}}>{x.username} ({x.movie})</h3>
-                  <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={(event) => handleRemovePost(event, x.movie, x.rating, x.comment)}>
-                    <MDBIcon far icon="trash-alt" style={{fontSize: '1rem'}}/>
-                  </MDBBtn>  
+                  { 
+                    x.username === props.username && (
+                      <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={(event) => handleRemovePost(event, x.movie, x.rating, x.comment)}>
+                        <MDBIcon far icon="trash-alt" style={{fontSize: '1rem'}}/>
+                      </MDBBtn>
+                    )
+                  }
                 </div>
                 <div className="post-content">
                   <p>Movie Rating: {x.rating} star</p>

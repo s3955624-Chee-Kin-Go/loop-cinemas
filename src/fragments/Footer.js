@@ -59,19 +59,19 @@ const Footer = () => {
                 <h3>FOLLOW US ON</h3>
                 <div className='footer-desc'>
                     <MDBBtn outline color="light" floating href='https://www.facebook.com/' target='_blank' role='button' className='social-icon'>
-                        <MDBIcon fab icon='facebook-f' />
+                        <MDBIcon fab icon='facebook-f' style={{fontSize: '1rem'}}/>
                     </MDBBtn>
 
                     <MDBBtn outline color="light" floating href='https://www.instagram.com/' target='_blank' role='button' className='social-icon'>
-                        <MDBIcon fab icon='instagram' />
+                        <MDBIcon fab icon='instagram' style={{fontSize: '1.2rem'}}/>
                     </MDBBtn>
 
                     <MDBBtn outline color="light" floating href='https://twitter.com/' target='_blank' role='button' className='social-icon'>
-                        <MDBIcon fab icon='twitter' />
+                        <MDBIcon fab icon='twitter' style={{fontSize: '1rem'}}/>
                     </MDBBtn>
 
                     <MDBBtn outline color="light" floating href='https://www.tiktok.com/' target='_blank' role='button' className='social-icon'>
-                        <MDBIcon fab icon="tiktok" />
+                        <MDBIcon fab icon="tiktok" style={{fontSize: '1rem'}}/>
                     </MDBBtn>
                 </div>
             </div>
