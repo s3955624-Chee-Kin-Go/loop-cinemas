@@ -122,9 +122,6 @@ function MovieCard({ imageUrl, title, text, type, handleSubmit, handleInputChang
                     {errorMessage !== null && (<span className="text-danger">{errorMessage}</span>)}
                     <input type="button" className="forum-button" value="Cancel" onClick={toggleShowReview}/>
                     <input type="submit" className="forum-button" value="Post" onClick={(event) => handleSubmit(event, rating, title)}/>
-                    <p>Sending title: {title}</p>
-                    <p>Sending post: {post}</p>
-                    <p>Sending rating: {rating}</p>
                   </fieldset>
                 </form>
                 <div style={{marginLeft:"15px"}}>

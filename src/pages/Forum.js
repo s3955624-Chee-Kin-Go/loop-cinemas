@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./pagesCSS/Forum.css"
 import { useNavigate } from "react-router-dom";
 import MovieCard from './pageResources/MovieCard';
-import { addNewReview } from "../data/repository";
+import { initReviews, addNewReview, getReviews} from "../data/repository";
 
 // NOTE: The posts are not persistent and will be lost when the component unmounts.
 // Could store the posts in localStorage, within the parent component, in a context, etc...
@@ -10,7 +10,13 @@ function Forum(props) {
   const navigate = useNavigate();
   const [post, setPost] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [posts, setPosts] = useState([]); // FIX THIS TO COMMUNICATE WITH DATABASE
+  const [posts, setPosts] = useState([]); // Store posts in state
+
+  useEffect(() => {
+    initReviews();
+    const reviews = getReviews();
+    setPosts(reviews);
+  }, []);
 
   const handleInputChange = (event) => {
     setPost(event.target.value);
@@ -36,16 +42,15 @@ function Forum(props) {
     }
 
     // Create post.
-    // addNewReview(props.username, title, rating, postTrimmed);
-    setPosts([...posts, { username: props.username, text: postTrimmed, starRating: rating, title: title}]);
+    addNewReview(props.username, title, rating, postTrimmed); // Correct values are being added
+    const reviews = getReviews(); // Fetch updated reviews
+    setPosts(reviews); // Update state with new reviews
 
     // Reset post content.
     setPost("");
     setErrorMessage("");
-    {/*
     navigate("/forum");
     navigate(0)
-    */}
   }
 
   return (
@@ -144,10 +149,9 @@ function Forum(props) {
               :
               posts.map((x) =>
                 <div className="post">
-                  <h3 style={{color: "red"}}>{x.username}({x.title})</h3>
-                  <p style={{color: "white"}}>Movie Title: {x.title}</p>
-                  <p style={{color: "white"}}>Movie Rating: {x.starRating} star</p>
-                  <p style={{color: "white"}}>{x.text}</p>
+                  <h3 style={{color: "red"}}>{x.username} ({x.movie})</h3>
+                  <p style={{color: "white"}}>Movie Rating: {x.rating} star</p>
+                  <p style={{color: "white"}}>{x.comment}</p>
                 </div>
               )
           }

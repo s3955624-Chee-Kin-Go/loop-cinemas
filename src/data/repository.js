@@ -64,15 +64,15 @@ function getReviews() {
 
 // Add newly signed-up user's name, email, password into local storage
 function addNewReview(newUsername, newMovie, newRating, newComment) {
-  const review = getReviews();
-  review.push({
+  const reviews = getReviews();
+  reviews.push({
     username: newUsername,
     movie: newMovie,
     rating: newRating,
     comment: newComment
   });
 
-  localStorage.setItem(USERS_KEY, JSON.stringify(review));
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
 }
 
 // Get the users array from local storage
@@ -190,6 +190,8 @@ function removeUser() {
 export {
   initUsers,
   initReviews,
+  getReviews,
+  addNewReview,
   verifyUser,
   addNewUser,
   updateUser,
