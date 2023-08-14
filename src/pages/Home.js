@@ -27,37 +27,43 @@ function Home() {
         <MovieCard
           imageUrl="https://poster.gsc.com.my/2023/230315_MissionImpossible-DeadReckoningPartOne_big.jpg"
           title="Mission: Impossible - Dead Reckoning Part 1"
-          text="Click to view session time"/>
+          text="Click to view session time"
+          type="movie"/>
         </div>
         <div className='movie-column'>
         <MovieCard
           imageUrl="https://poster.gsc.com.my/2023/230714_TheMoon_big.jpg"
           title="The Moon"
-          text="Click to view session time"/>
+          text="Click to view session time"
+          type="movie"/>
         </div>
         <div className='movie-column'>
           <MovieCard
           imageUrl="https://poster.gsc.com.my/2023/230307_TheMarvels_big.jpg"
           title="The Marvels"
-          text="Click to view session time"/>
+          text="Click to view session time"
+          type="movie"/>
         </div>
         <div className='movie-column'>
           <MovieCard
           imageUrl="https://poster.gsc.com.my/2023/230713_Wonka_big.jpg"
           title="Wonka"
-          text="Click to view session time"/>
+          text="Click to view session time"
+          type="movie"/>
         </div>
         <div className='movie-column'>
         <MovieCard
           imageUrl="https://poster.gsc.com.my/2023/230714_ConcreteUtopia_big.jpg"
           title="Concrete Utopia"
-          text="Click to view session time"/>
+          text="Click to view session time"
+          type="movie"/>
         </div>
         <div className='movie-column'>
         <MovieCard
           imageUrl="https://poster.gsc.com.my/2023/230504_DunePartTwo_big.jpg"
           title="Dune Part Two"
-          text="Click to view session time"/>
+          text="Click to view session time"
+          type="movie"/>
         </div>
       </div>
     </section>
