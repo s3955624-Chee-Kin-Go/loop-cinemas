@@ -11,7 +11,7 @@ function Navbar(props) {
           {props.username !== null &&
               <>
                 <div className="other-pages">
-                  <Link className="" to="/forum">Forum</Link>
+                  <Link className="" to="/review">Review</Link>
                   {/*Link to Forum and Profile after successfully sign in*/}
                 </div>
                 <div className="other-pages">

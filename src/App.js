@@ -5,7 +5,7 @@ import Footer from "./fragments/Footer";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import MyProfile from "./pages/MyProfile";
-import Forum from "./pages/Forum";
+import Review from "./pages/Review";
 import SignUp from "./pages/SignUp";
 import { getUser, getEmail, getPassword, getSignUpDate, getIndex, removeUser } from "./data/repository";
 
@@ -44,7 +44,7 @@ function App() {
               <Route path="/sign-in" element={<SignIn loginUser={loginUser} />} />
               <Route path="/sign-up" element={<SignUp loginUser={loginUser} />} />
               <Route path="/profile" element={<MyProfile index={index} username={username} email={email} signupDate={signupDate}/>} />
-              <Route path="/forum" element={<Forum username={username} />} />
+              <Route path="/review" element={<Review username={username} />} />
             </Routes>
           </div>
         </main>

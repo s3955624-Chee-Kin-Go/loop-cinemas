@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./pagesCSS/Forum.css"
+import "./pagesCSS/Review.css"
 import { useNavigate } from "react-router-dom";
 import MovieCard from './pageResources/MovieCard';
 import { getMovies, sortMovies, initReviews, addNewReview, getReviews, editReview, deleteReview} from "../data/repository";
@@ -15,7 +15,7 @@ import { FaStar} from 'react-icons/fa'
 
 // NOTE: The posts are not persistent and will be lost when the component unmounts.
 // Could store the posts in localStorage, within the parent component, in a context, etc...
-function Forum(props) {
+function Review(props) {
   const navigate = useNavigate();
   const movies = getMovies();
   const [post, setPost] = useState("");
@@ -26,7 +26,7 @@ function Forum(props) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
 
-  const showForum = (index) => {
+  const showReview = (index) => {
     setSelectedPostIndex(index);
     setEditReviewModal(true);
   };  
@@ -38,9 +38,6 @@ function Forum(props) {
 
   // Implement remove user functionality
   const handleEditPost = (event, newRating, newPost, postIndex) => {
-    console.log("POST INDEX: " + postIndex);
-    console.log("NEW POST: " + newPost);
-    console.log("NEW RATING: " + newRating);
     event.preventDefault();
     const confirmDelete = window.confirm("Are you sure you want to edit your post?");
     if (confirmDelete) {
@@ -50,8 +47,8 @@ function Forum(props) {
       alert("Your post is now edited!"); 
       // Sort Movies
       sortMovies();
-      // Navigate to the forum page.
-      navigate("/forum");
+      // Navigate to the review page.
+      navigate("/review");
       // Refresh page
       navigate(0);
     }
@@ -68,8 +65,8 @@ function Forum(props) {
       alert("Your post is now deleted!");
       // Sort Movies
       sortMovies();
-      // Navigate to the forum page.
-      navigate("/forum");
+      // Navigate to the review page.
+      navigate("/review");
       // Refresh page
       navigate(0);
     }
@@ -122,8 +119,8 @@ function Forum(props) {
     setErrorMessage("");
     // Sort Movies
     sortMovies();
-    // Navigate to forum page
-    navigate("/forum");
+    // Navigate to review page
+    navigate("/review");
     // Refresh page
     navigate(0)
   }
@@ -151,7 +148,7 @@ function Forum(props) {
         </div>
       </section>
       <div className="content">
-        <h1>Forum</h1>
+        <h1>Review</h1>
         <div>
           {
             posts.length === 0 ?
@@ -164,7 +161,7 @@ function Forum(props) {
                   { 
                     x.username === props.username && (
                       <div>
-                        <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={() => showForum(index)}>
+                        <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={() => showReview(index)}>
                           <MDBIcon far icon="edit" style={{fontSize: '1rem'}}/>
                         </MDBBtn>
                         <MDBBtn outline color="light" floating href="" role="button" className="forum-delete-icon" onClick={(event) => handleRemovePost(event, x.movie, x.rating, x.comment)}>
@@ -237,4 +234,4 @@ function Forum(props) {
   );
 }
 
-export default Forum;
+export default Review;
