@@ -210,7 +210,8 @@ function Review(props) {
                         </div>
                       </div>
                       <div className="form-container">
-                        <label htmlFor="email">Comment</label>
+                        <p>Your new rating for the movie is {rating} star</p>
+                        <label htmlFor="email" style={{color:"red", fontFamily: "var(--font-montserrat)", fontSize: "28px", fontWeight: "600"}}>Your Comment</label>
                         <textarea name="post" id="post" className="new-post" rows="5" value={post} onChange={handleInputChange}/>
                       </div>
                       <div className="form-container">
