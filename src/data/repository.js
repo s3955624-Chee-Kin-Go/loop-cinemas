@@ -38,7 +38,7 @@ function initMovies() {
     {
       title: "Mission: Impossible - Dead Reckoning Part 1",
       imageURL: [MissionImpossiblePoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["10:20am", "2:00pm", "2:45pm", "4:50pm", "5:20pm", "7:10pm", "9:00pm", "11:30pm"]
     },
     {
       title: "The Moon",
@@ -48,22 +48,22 @@ function initMovies() {
     {
       title: "The Marvels",
       imageURL: [TheMarvelsPoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["9:00am", "11:10pm", "12:45pm", "2:00pm", "6:10pm"]
     },
     {
       title: "Wonka",
       imageURL: [WonkaPoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["8:50am", "10:10pm", "11:30pm", "5:10pm", "8:10pm"]
     },
     {
       title: "Concrete Utopia",
       imageURL: [ConcreteUtopiaPoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["11:50am", "1:00pm", "3:35pm", "4:45pm", "7:30pm", "9:30pm"]
     },
     {
       title: "une Part Two",
       imageURL: [DunePartTwoPoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["10:25am", "11:00am", "12:30pm", "1:45pm", "3:00pm", "5:10pm", "7:10pm"]
     }
   ];
 

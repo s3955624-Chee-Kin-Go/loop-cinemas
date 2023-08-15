@@ -12,7 +12,7 @@ import {
 import "./StarRating.css"
 import { FaStar} from 'react-icons/fa'
 
-function MovieCard({ imageUrl, title, text, type, handleSubmit, handleInputChange, errorMessage, post }) {
+function MovieCard({ imageUrl, title, text, type, sessionTime, handleSubmit, handleInputChange, errorMessage, post }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
   const [MovieModal, setMovieModal] = useState(false);
@@ -56,10 +56,10 @@ function MovieCard({ imageUrl, title, text, type, handleSubmit, handleInputChang
                   <div className="" style={{marginTop: "10px"}}>
                     <p style={{color:"white", fontFamily:"var(--font-montserrat)"}}>Session Time</p>
                     <ul style={{color:"white", fontFamily:"var(--font-montserrat)"}}>
-                      <li>10:00am</li>
-                      <li>12:00pm</li>
-                      <li>3:00pm</li>
-                      <li>6:00pm</li>
+                    {
+                      sessionTime.map((time) =>
+                      <li>{time}</li>
+                    )}
                     </ul>
                   </div>
                 </div>

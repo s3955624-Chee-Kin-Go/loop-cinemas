@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./pagesCSS/Forum.css"
 import { useNavigate } from "react-router-dom";
 import MovieCard from './pageResources/MovieCard';
-import { initReviews, addNewReview, getReviews, editReview, deleteReview} from "../data/repository";
+import { getMovies, initReviews, addNewReview, getReviews, editReview, deleteReview} from "../data/repository";
 import {
   MDBIcon,
   MDBBtn,
@@ -17,6 +17,7 @@ import { FaStar} from 'react-icons/fa'
 // Could store the posts in localStorage, within the parent component, in a context, etc...
 function Forum(props) {
   const navigate = useNavigate();
+  const movies = getMovies();
   const [post, setPost] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [posts, setPosts] = useState([]); // Store posts in state
@@ -119,86 +120,20 @@ function Forum(props) {
     <h1 className="section-title">Select A Movie To Leave A Review</h1>
     <section className="movie-section">
         <div className='movie-row'>
-          <div className='movie-column'>
-          <MovieCard
-            imageUrl="https://cdn.palacecinemas.com.au/CDN/Image/Entity/FilmPosterGraphic/HO00016663"
-            title="Barbie"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "Barbie")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-            <MovieCard
-            imageUrl="https://cdn.palacecinemas.com.au/CDN/Image/Entity/FilmPosterGraphic/HO00016619"
-            title="Oppenheimer"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "Oppenheimer")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-          <MovieCard
-            imageUrl="https://poster.gsc.com.my/2023/230315_MissionImpossible-DeadReckoningPartOne_big.jpg"
-            title="Mission: Impossible - Dead Reckoning Part 1"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "Mission: Impossible - Dead Reckoning Part 1")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-          <MovieCard
-            imageUrl="https://poster.gsc.com.my/2023/230714_TheMoon_big.jpg"
-            title="The Moon"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "The Moon")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-            <MovieCard
-            imageUrl="https://poster.gsc.com.my/2023/230307_TheMarvels_big.jpg"
-            title="The Marvels"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "The Marvels")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-            <MovieCard
-            imageUrl="https://poster.gsc.com.my/2023/230713_Wonka_big.jpg"
-            title="Wonka"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "Wonka")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-          <MovieCard
-            imageUrl="https://poster.gsc.com.my/2023/230714_ConcreteUtopia_big.jpg"
-            title="Concrete Utopia"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "Concrete Utopia")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
-          <div className='movie-column'>
-          <MovieCard
-            imageUrl="https://poster.gsc.com.my/2023/230504_DunePartTwo_big.jpg"
-            title="Dune Part Two"
-            text="Click to leave a review"
-            handleSubmit={(event, rating) => handleSubmit(event, rating, "Dune Part Two")}
-            handleInputChange={handleInputChange}
-            errorMessage={errorMessage}
-            post={post}/>
-          </div>
+          {
+          movies.map((movie) =>
+            <div className='movie-column'>
+              <MovieCard
+              imageUrl={movie.imageURL[0]}
+              title={movie.title}
+              text="Click to leave a review"
+              handleSubmit={(event, rating) => handleSubmit(event, rating, movie.title)}
+              handleInputChange={handleInputChange}
+              errorMessage={errorMessage}
+              post={post}/>
+            </div>
+          )
+          }
         </div>
       </section>
       <div className="content">

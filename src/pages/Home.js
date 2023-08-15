@@ -14,13 +14,14 @@ function Home() {
       <div className='movie-row'>
         {
           movies.map((movie) =>
-          <div className='movie-column'>
-          <MovieCard
-          imageUrl={movie.imageURL[0]}
-          title={movie.name}
-          text="Click to view session time"
-          type="movie"/>
-        </div>
+            <div className='movie-column'>
+              <MovieCard
+              imageUrl={movie.imageURL[0]}
+              title={movie.title}
+              text="Click to view session time"
+              type="movie"
+              sessionTime={movie.sessionTime}/>
+            </div>
           )
         }
       </div>
