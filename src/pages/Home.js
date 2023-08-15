@@ -19,6 +19,7 @@ function Home() {
               imageUrl={movie.imageURL[0]}
               title={movie.title}
               text="Click to view session time"
+              averageRating = {movie.averageRating}
               type="movie"
               sessionTime={movie.sessionTime}/>
             </div>

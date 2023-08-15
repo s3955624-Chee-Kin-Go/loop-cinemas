@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { updateUser, deleteUser, removeUser } from "../data/repository";
+import { updateUser, deleteUser, removeUser, sortMovies } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 import './pagesCSS/MyProfile.css';
 import '../pages/pagesCSS/SignIn.css';
@@ -31,6 +31,8 @@ function MyProfile(props) {
       removeUser();
       // Visual cue for alerting user profile is deleted
       alert("Your profile is now deleted!");
+      // Sort Movies
+      sortMovies();
       // Navigate to the home page.
       navigate("/");
       // Refresh page

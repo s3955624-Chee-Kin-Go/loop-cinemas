@@ -236,7 +236,7 @@ function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
       if (movie.ratingCount === 0) {
         movie.averageRating = 0;
       }
-      if (movie.ratingCount !== 0) {
+      else {
         movie.averageRating =  movie.averageRating / movie.ratingCount;
       }
       break;
@@ -319,6 +319,7 @@ function verifyUser(email, password) {
 function deleteUser(currUsername) {
   const users = getUsers();
   const reviews = getReviews();
+  const movies = getMovies();
 
   // Delete user profile
   for(const user of users) {
@@ -333,15 +334,33 @@ function deleteUser(currUsername) {
   // Delete user's reviews
   for (var reviewIndex = reviews.length - 1; reviewIndex >= 0; --reviewIndex) {
     if (reviews[reviewIndex].username === currUsername) {
+
+      // Recalculate average rating
+      for(const movie of movies) {
+        if (movie.title === reviews[reviewIndex].movie) {
+          movie.averageRating = (movie.averageRating * movie.ratingCount) - reviews[reviewIndex].rating;
+          movie.ratingCount--;
+          if (movie.ratingCount === 0) {
+            movie.averageRating = 0;
+          }
+          else {
+            movie.averageRating =  movie.averageRating / movie.ratingCount;
+          }
+          break;
+        }
+      }  
+      
+      // Remove user's review
       reviews.splice(reviewIndex,1);
     }
   }
 
   // Update users array with updated username
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
-  
   // Update reviews array with updated username
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  // Set movies array into local storage.
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
 }
 
 // Set signed-in user's individual data fields into local storage

@@ -36,6 +36,7 @@ function MovieCard({ imageUrl, title, averageRating, text, type, sessionTime, ha
         <div className='mask' style={{backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <div>
             <p style={{fontFamily: "var(--font-montserrat)", fontSize: "23px", fontWeight: "600", color: "rgb(255, 255, 255)", textAlign:"center", lineHeight: "33.6px"}}>{title}</p>
+            <p style={{fontFamily: "var(--font-montserrat)", fontSize: "15px", fontWeight: "400", color: "rgb(255, 255, 255)", textAlign:"center"}}>Average Rating: {averageRating.toFixed(2)}</p>
             <p style={{fontFamily: "var(--font-montserrat)", fontSize: "15px", fontWeight: "300", color: "rgb(255, 255, 255)", textAlign:"center"}}>{text}</p>
           </div>
         </div>
