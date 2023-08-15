@@ -68,7 +68,7 @@ function initMovies() {
       averageRating: 0
     },
     {
-      title: "une Part Two",
+      title: "Dune Part Two",
       imageURL: [DunePartTwoPoster],
       sessionTime: ["10:25am", "11:00am", "12:30pm", "1:45pm", "3:00pm", "5:10pm", "7:10pm"],
       averageRating: 0
