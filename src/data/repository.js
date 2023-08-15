@@ -122,6 +122,18 @@ function getMovies() {
   return JSON.parse(data);
 }
 
+// Sort the movies array from highest to lowest
+function sortMovies() {
+  // Extract movie data from local storage.
+  const movies = getMovies();
+
+  // Sort Movies from highest to Lowest Rating
+  movies.sort((movie1,movie2) => movie2.averageRating - movie1.averageRating);
+
+  // Set movies array into local storage.
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
+}
+
 // Initialise local storage "reviews" with data, if the data is already set this function returns immediately.
 function initReviews() {
   // Stop if data is already initialised.
@@ -221,7 +233,12 @@ function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
     if(movie.title === currMovieTitle) {
       movie.averageRating = (movie.averageRating * movie.ratingCount) - currRating;
       movie.ratingCount--;
-      movie.averageRating =  movie.averageRating / movie.ratingCount;
+      if (movie.ratingCount === 0) {
+        movie.averageRating = 0;
+      }
+      if (movie.ratingCount !== 0) {
+        movie.averageRating =  movie.averageRating / movie.ratingCount;
+      }
       break;
     }
   }
@@ -374,6 +391,7 @@ export {
   initMovies,
   initUsers,
   initReviews,
+  sortMovies,
   getMovies,
   getReviews,
   addNewReview,

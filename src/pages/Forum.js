@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./pagesCSS/Forum.css"
 import { useNavigate } from "react-router-dom";
 import MovieCard from './pageResources/MovieCard';
-import { getMovies, initReviews, addNewReview, getReviews, editReview, deleteReview} from "../data/repository";
+import { getMovies, sortMovies, initReviews, addNewReview, getReviews, editReview, deleteReview} from "../data/repository";
 import {
   MDBIcon,
   MDBBtn,
@@ -48,7 +48,9 @@ function Forum(props) {
       editReview(newRating, newPost, postIndex)
       // Visual cue for alerting user profile is deleted
       alert("Your post is now edited!"); 
-      // Navigate to the home page.
+      // Sort Movies
+      sortMovies();
+      // Navigate to the forum page.
       navigate("/forum");
       // Refresh page
       navigate(0);
@@ -64,10 +66,14 @@ function Forum(props) {
       deleteReview(props.username, title, rating, postTrimmed)
       // Visual cue for alerting user profile is deleted
       alert("Your post is now deleted!");
-      // Navigate to the home page.
+      // Sort Movies
+      sortMovies();
+      // Navigate to the forum page.
       navigate("/forum");
       // Refresh page
       navigate(0);
+      // Scroll to top
+      window.scroll(0,0);
     }
   };
 
@@ -111,7 +117,11 @@ function Forum(props) {
     // Reset post content.
     setPost("");
     setErrorMessage("");
+    // Sort Movies
+    sortMovies();
+    // Navigate to forum page
     navigate("/forum");
+    // Refresh page
     navigate(0)
   }
 
