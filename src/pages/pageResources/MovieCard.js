@@ -12,7 +12,7 @@ import {
 import "./StarRating.css"
 import { FaStar} from 'react-icons/fa'
 
-function MovieCard({ imageUrl, title, text, type, sessionTime, handleSubmit, handleInputChange, errorMessage, post }) {
+function MovieCard({ imageUrl, title, averageRating, text, type, sessionTime, handleSubmit, handleInputChange, errorMessage, post }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
   const [MovieModal, setMovieModal] = useState(false);
@@ -86,7 +86,8 @@ function MovieCard({ imageUrl, title, text, type, sessionTime, handleSubmit, han
         <img src={imageUrl} position="top" style={{aspectRatio:"2/3", width: "250px", objectFit: "cover"}}/>
         <div className='mask' style={{backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <div>
-            <p style={{fontFamily: "var(--font-montserrat)", fontSize: "23px", fontWeight: "600", color: "rgb(255, 255, 255)", textAlign:"center", lineHeight: "33.6px"}}>{title}</p>
+            <p style={{fontFamily: "var(--font-montserrat)", fontSize: "23px", fontWeight: "600", color: "rgb(255, 255, 255)", textAlign:"center"}}>{title}</p>
+            <p style={{fontFamily: "var(--font-montserrat)", fontSize: "15px", fontWeight: "400", color: "rgb(255, 255, 255)", textAlign:"center"}}>Average Rating: {averageRating}</p>
             <p style={{fontFamily: "var(--font-montserrat)", fontSize: "15px", fontWeight: "300", color: "rgb(255, 255, 255)", textAlign:"center"}}>{text}</p>
           </div>
         </div>

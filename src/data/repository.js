@@ -28,42 +28,50 @@ function initMovies() {
     {
       title: "Barbie",
       imageURL: [BarbiePoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"],
+      averageRating: 0
     },
     {
       title: "Oppenheimer",
       imageURL: [OppenheimerPoster],
-      sessionTime: ["11:25am", "1:00pm", "2:45pm", "5:00pm", "6:30pm", "7:00pm"]
+      sessionTime: ["11:25am", "1:00pm", "2:45pm", "5:00pm", "6:30pm", "7:00pm"],
+      averageRating: 0
     },
     {
       title: "Mission: Impossible - Dead Reckoning Part 1",
       imageURL: [MissionImpossiblePoster],
-      sessionTime: ["10:20am", "2:00pm", "2:45pm", "4:50pm", "5:20pm", "7:10pm", "9:00pm", "11:30pm"]
+      sessionTime: ["10:20am", "2:00pm", "2:45pm", "4:50pm", "5:20pm", "7:10pm", "9:00pm", "11:30pm"],
+      averageRating: 0
     },
     {
       title: "The Moon",
       imageURL: [TheMoonPoster],
-      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"]
+      sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"],
+      averageRating: 0
     },
     {
       title: "The Marvels",
       imageURL: [TheMarvelsPoster],
-      sessionTime: ["9:00am", "11:10pm", "12:45pm", "2:00pm", "6:10pm"]
+      sessionTime: ["9:00am", "11:10pm", "12:45pm", "2:00pm", "6:10pm"],
+      averageRating: 0
     },
     {
       title: "Wonka",
       imageURL: [WonkaPoster],
-      sessionTime: ["8:50am", "10:10pm", "11:30pm", "5:10pm", "8:10pm"]
+      sessionTime: ["8:50am", "10:10pm", "11:30pm", "5:10pm", "8:10pm"],
+      averageRating: 0
     },
     {
       title: "Concrete Utopia",
       imageURL: [ConcreteUtopiaPoster],
-      sessionTime: ["11:50am", "1:00pm", "3:35pm", "4:45pm", "7:30pm", "9:30pm"]
+      sessionTime: ["11:50am", "1:00pm", "3:35pm", "4:45pm", "7:30pm", "9:30pm"],
+      averageRating: 0
     },
     {
       title: "une Part Two",
       imageURL: [DunePartTwoPoster],
-      sessionTime: ["10:25am", "11:00am", "12:30pm", "1:45pm", "3:00pm", "5:10pm", "7:10pm"]
+      sessionTime: ["10:25am", "11:00am", "12:30pm", "1:45pm", "3:00pm", "5:10pm", "7:10pm"],
+      averageRating: 0
     }
   ];
 

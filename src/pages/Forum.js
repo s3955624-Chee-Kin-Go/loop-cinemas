@@ -127,6 +127,7 @@ function Forum(props) {
               imageUrl={movie.imageURL[0]}
               title={movie.title}
               text="Click to leave a review"
+              averageRating = {movie.averageRating}
               handleSubmit={(event, rating) => handleSubmit(event, rating, movie.title)}
               handleInputChange={handleInputChange}
               errorMessage={errorMessage}
