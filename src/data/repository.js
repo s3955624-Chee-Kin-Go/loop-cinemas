@@ -29,49 +29,57 @@ function initMovies() {
       title: "Barbie",
       imageURL: [BarbiePoster],
       sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "Oppenheimer",
       imageURL: [OppenheimerPoster],
       sessionTime: ["11:25am", "1:00pm", "2:45pm", "5:00pm", "6:30pm", "7:00pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "Mission: Impossible - Dead Reckoning Part 1",
       imageURL: [MissionImpossiblePoster],
       sessionTime: ["10:20am", "2:00pm", "2:45pm", "4:50pm", "5:20pm", "7:10pm", "9:00pm", "11:30pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "The Moon",
       imageURL: [TheMoonPoster],
       sessionTime: ["10:25am", "12:00pm", "2:30pm", "3:45pm", "5:00pm", "8:00pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "The Marvels",
       imageURL: [TheMarvelsPoster],
       sessionTime: ["9:00am", "11:10pm", "12:45pm", "2:00pm", "6:10pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "Wonka",
       imageURL: [WonkaPoster],
       sessionTime: ["8:50am", "10:10pm", "11:30pm", "5:10pm", "8:10pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "Concrete Utopia",
       imageURL: [ConcreteUtopiaPoster],
       sessionTime: ["11:50am", "1:00pm", "3:35pm", "4:45pm", "7:30pm", "9:30pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     },
     {
       title: "Dune Part Two",
       imageURL: [DunePartTwoPoster],
       sessionTime: ["10:25am", "11:00am", "12:30pm", "1:45pm", "3:00pm", "5:10pm", "7:10pm"],
-      averageRating: 0
+      averageRating: 0,
+      ratingCount: 0
     }
   ];
 
@@ -135,39 +143,70 @@ function getReviews() {
   return JSON.parse(data);
 }
 
-// Add user's post into local storage including the username, movie title, rating and comment
-function addNewReview(username, movie, rating, comment) {
+// Add user's review into local storage including the username, movie title, rating and comment
+function addNewReview(username, title, rating, comment) {
   const reviews = getReviews();
+  const movies = getMovies();
+
   reviews.push({
     username: username,
-    movie: movie,
+    movie: title,
     rating: rating,
     comment: comment
   });
 
-  // Set reviews array into local storage.
-  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
-}
-
-// update user's name and email into local storage
-function editReview(newComment, newRating, postIndex) {
-  const reviews = getReviews();
-
-  for(const review of reviews) {
-    if (reviews.indexOf(review) === postIndex) {
-      reviews[postIndex].rating = newComment;
-      reviews[postIndex].comment = newRating;    
+  for(const movie of movies) {
+    if(movie.title === title) {
+      movie.averageRating = movie.averageRating * movie.ratingCount;
+      movie.averageRating +=  rating;
+      movie.ratingCount++;
+      movie.averageRating =  movie.averageRating / movie.ratingCount;
       break;
     }
   }
 
   // Set reviews array into local storage.
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  // Set movies array into local storage.
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
+}
+
+// update review's comment and rating into local storage
+function editReview(newRating, newComment, postIndex) {
+  const reviews = getReviews();
+  const movies = getMovies();
+  var movieName = null;
+  var previousRating = null;
+
+  for(const review of reviews) {
+    if (reviews.indexOf(review) === postIndex) {
+      previousRating = reviews[postIndex].rating;
+      reviews[postIndex].rating = newRating;
+      reviews[postIndex].comment = newComment;   
+      movieName =  reviews[postIndex].movie;
+      break;
+    }
+  }
+
+  for(const movie of movies) {
+    if(movie.title === movieName) {
+      movie.averageRating = (movie.averageRating * movie.ratingCount) - previousRating;
+      movie.averageRating +=  newRating;
+      movie.averageRating =  movie.averageRating / movie.ratingCount;
+      break;
+    }
+  }
+
+  // Set reviews array into local storage.
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  // Set movies array into local storage.
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
 }
 
 // Remove post from local storage
 function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
   const reviews = getReviews();
+  const movies = getMovies();
 
   for(const review of reviews) {
     if(currUsername === review.username && currMovieTitle === review.movie && currRating === review.rating && currComment === review.comment)
@@ -178,8 +217,19 @@ function deleteReview(currUsername, currMovieTitle, currRating, currComment) {
     }
   }
 
+  for(const movie of movies) {
+    if(movie.title === currMovieTitle) {
+      movie.averageRating = (movie.averageRating * movie.ratingCount) - currRating;
+      movie.ratingCount--;
+      movie.averageRating =  movie.averageRating / movie.ratingCount;
+      break;
+    }
+  }
+
   // Set reviews array into local storage.
   localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  // Set movies array into local storage.
+  localStorage.setItem(MOVIES_KEY, JSON.stringify(movies));
 }
 
 // Get the users array from local storage

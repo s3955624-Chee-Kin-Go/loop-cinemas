@@ -37,7 +37,7 @@ function Forum(props) {
 
 
   // Implement remove user functionality
-  const handleEditPost = (event, newPost, newRating, postIndex) => {
+  const handleEditPost = (event, newRating, newPost, postIndex) => {
     console.log("POST INDEX: " + postIndex);
     console.log("NEW POST: " + newPost);
     console.log("NEW RATING: " + newRating);
@@ -45,7 +45,7 @@ function Forum(props) {
     const confirmDelete = window.confirm("Are you sure you want to edit your post?");
     if (confirmDelete) {
       // Delete user from localStorage
-      editReview(newPost, newRating, postIndex)
+      editReview(newRating, newPost, postIndex)
       // Visual cue for alerting user profile is deleted
       alert("Your post is now edited!"); 
       // Navigate to the home page.
