@@ -72,8 +72,6 @@ function Forum(props) {
       navigate("/forum");
       // Refresh page
       navigate(0);
-      // Scroll to top
-      window.scroll(0,0);
     }
   };
 
@@ -85,6 +83,11 @@ function Forum(props) {
     const reviews = getReviews();
     setPosts(reviews);
   }, []);
+
+  // Scroll to toip when posts array changed (i.e. review edited, review deleted)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [posts]);
 
   const handleInputChange = (event) => {
     setPost(event.target.value);
