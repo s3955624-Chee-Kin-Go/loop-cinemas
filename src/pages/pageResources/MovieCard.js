@@ -119,10 +119,11 @@ function MovieCard({ imageUrl, title, averageRating, text, type, sessionTime, ha
                 <form onSubmit={handleSubmit}>                  
                   <fieldset>
                     <textarea name="post" id="post" className="new-post" rows="5" value={post} onChange={handleInputChange}/>
+                    {errorMessage !== null && (<span className="text-danger">{errorMessage}</span>)}
+                    <br></br>
                     <input type="submit" className="btn submit-btn" value="POST" style ={{marginRight:"1rem"}} onClick={(event) => handleSubmit(event, rating, title)}/>
                     <input type="button" className="btn submit-btn" value="CANCEL" onClick={toggleShowReview}/>
                   </fieldset>
-                  {errorMessage !== null && (<span className="text-danger">{errorMessage}</span>)}
                 </form>
                 <div style={{marginLeft:"15px"}}>
               </div>

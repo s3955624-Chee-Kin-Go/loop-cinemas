@@ -39,6 +39,20 @@ function Review(props) {
   // Implement remove user functionality
   const handleEditPost = (event, newRating, newPost, postIndex) => {
     event.preventDefault();
+
+    if(newPost.length > 250) {
+      setErrorMessage("The post has exceeded the maximum length of 250 characters.");
+      return;
+    }
+    else if(newPost.trim() === "") {
+      setErrorMessage("Your comment cannot be empty.");
+      return;
+    }
+    else if(newRating < 1 || newRating > 5){
+      setErrorMessage("Please select a rating.");
+      return;
+    }
+
     const confirmDelete = window.confirm("Are you sure you want to edit your post?");
     if (confirmDelete) {
       // Delete user from localStorage
@@ -214,15 +228,15 @@ function Review(props) {
                         <label htmlFor="email" style={{color:"red", fontFamily: "var(--font-montserrat)", fontSize: "28px", fontWeight: "600"}}>Your Comment</label>
                         <textarea name="post" id="post" className="new-post" rows="5" value={post} onChange={handleInputChange}/>
                       </div>
-                      <div className="form-container">
-                        <input type="submit" className="btn submit-btn" value="UPDATE" style={{marginRight: "1rem"}} onClick={(event) => handleEditPost(event, rating, post, selectedPostIndex)}/>
-                        <input type="button" className="btn submit-btn" onClick={() => setEditReviewModal(false)} value="CANCEL"/>
-                      </div>
                       {errorMessage !== null && (
                         <div className="form-container">
                           <span className="text-danger">{errorMessage}</span>
                         </div>
                       )}
+                      <div className="form-container">
+                        <input type="submit" className="btn submit-btn" value="UPDATE" style={{marginRight: "1rem"}} onClick={(event) => handleEditPost(event, rating, post, selectedPostIndex)}/>
+                        <input type="button" className="btn submit-btn" onClick={() => setEditReviewModal(false)} value="CANCEL"/>
+                      </div>
                     </form>
                   </div>
                 </div>
