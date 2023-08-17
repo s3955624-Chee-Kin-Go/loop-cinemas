@@ -62,7 +62,7 @@ function MyProfile(props) {
     // Set variable for edit profile error due to fail validation
     var editProfileError = false;
 
-    // Check if username, email, and password are empty
+    // Check if username and email are empty
     if (fields.username === "" || fields.email === "") {
       setErrorMessage("Please fill in all the required fields.");
       editProfileError = true;

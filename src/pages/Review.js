@@ -13,8 +13,6 @@ import {
 } from 'mdb-react-ui-kit';
 import { FaStar} from 'react-icons/fa'
 
-// NOTE: The posts are not persistent and will be lost when the component unmounts.
-// Could store the posts in localStorage, within the parent component, in a context, etc...
 function Review(props) {
   const navigate = useNavigate();
   const movies = getMovies();
@@ -31,32 +29,37 @@ function Review(props) {
     setEditReviewModal(true);
   };  
 
+  // Rating change handler
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
 
-
-  // Implement remove user functionality
-  const handleEditPost = (event, newRating, newPost, postIndex) => {
+  // Edit Review functionality
+  const handleEditPost = (event, newRating, newComment, postIndex) => {
     event.preventDefault();
 
-    if(newPost.length > 250) {
-      setErrorMessage("The post has exceeded the maximum length of 250 characters.");
+    // Check if comment exceed 250 characters
+    if(newComment.length > 250) {
+      setErrorMessage("The comment has exceeded the maximum length of 250 characters.");
       return;
     }
-    else if(newPost.trim() === "") {
+    // Check if comment is empty
+    else if(newComment.trim() === "") {
       setErrorMessage("Your comment cannot be empty.");
       return;
     }
+    // Check if rating is valid
     else if(newRating < 1 || newRating > 5){
       setErrorMessage("Please select a rating.");
       return;
     }
 
+    // Provide visual cue to user to confirm review edit
     const confirmDelete = window.confirm("Are you sure you want to edit your post?");
+
     if (confirmDelete) {
       // Delete user from localStorage
-      editReview(newRating, newPost, postIndex)
+      editReview(newRating, newComment, postIndex)
       // Visual cue for alerting user profile is deleted
       alert("Your post is now edited!"); 
       // Sort Movies
@@ -68,15 +71,15 @@ function Review(props) {
     }
   };
 
-  // Implement remove user functionality
-  const handleRemovePost = (event, title, rating, postTrimmed) => {
+  // Remove review functionality
+  const handleRemovePost = (event, title, rating, commentTrimmed) => {
     event.preventDefault();
-    const confirmDelete = window.confirm("Are you sure you want to delete your post?");
+    const confirmDelete = window.confirm("Are you sure you want to delete your review?");
     if (confirmDelete) {
-      // Delete user from localStorage
-      deleteReview(props.username, title, rating, postTrimmed)
-      // Visual cue for alerting user profile is deleted
-      alert("Your post is now deleted!");
+      // Delete review from localStorage
+      deleteReview(props.username, title, rating, commentTrimmed)
+      // Visual cue for alerting user review is deleted
+      alert("Your review is now deleted!");
       // Sort Movies
       sortMovies();
       // Navigate to the review page.
@@ -104,32 +107,37 @@ function Review(props) {
     setPost(event.target.value);
   }
 
+  // Submit review functionality
   const handleSubmit = (event, rating, title) => {
     event.preventDefault();
 
     // Trim the post text.
     const postTrimmed = post.trim();
 
+    // Check if comment is empty
     if (postTrimmed === "") {
       setErrorMessage("Your ratings and/or comment cannot be empty.");
       return;
     }
+    // Check if comment exceed 250 characters
     else if(postTrimmed.length > 250) {
-      setErrorMessage("The post has exceeded the maximum length of 250 characters.");
+      setErrorMessage("The comment has exceeded the maximum length of 250 characters.");
       return;
     }
+    // Check if rating is valid
     else if(rating < 1 || rating > 5){
       setErrorMessage("Please select a rating.");
       return;
     }
 
-    // Create post.
+    // Add new review into local storage
     addNewReview(props.username, title, rating, postTrimmed); // Correct values are being added
     const reviews = getReviews(); // Fetch updated reviews
     setPosts(reviews); // Update state with new reviews
 
     // Reset post content.
     setPost("");
+    // Reset error message
     setErrorMessage("");
     // Sort Movies
     sortMovies();
@@ -144,6 +152,7 @@ function Review(props) {
     <h1 className="section-title">Select A Movie To Leave A Review</h1>
     <section className="movie-section">
         <div className='movie-row'>
+          {/*Display all movies*/}
           {
           movies.map((movie) =>
             <div className='movie-column'>
