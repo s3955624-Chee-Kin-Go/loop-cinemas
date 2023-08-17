@@ -22,3 +22,6 @@ You may also see any lint errors in the console.
 All movie posters displayed in the web application are obtained from the following external sources (cinema website):
 - TGV Cinema: https://www.tgv.com.my/
 - GSC Cinema: https://www.gsc.com.my/movies/
+
+Interior cinema image displayed in About Us section of Home page is obtained from the following external source (cinema website):
+- Event Cinemas: https://www.eventcinemas.com.au/experiences/Vmax
