@@ -14,7 +14,7 @@ function SignIn(props) {
     const name = event.target.name;
     const value = event.target.value;
 
-    // Copy fields.
+    // Copy email and password fields into temp
     const temp = { email: fields.email, password: fields.password };
     // OR use spread operator.
     // const temp = { ...fields };
@@ -24,9 +24,11 @@ function SignIn(props) {
     setFields(temp);
   }
 
+  // Generic submit handler for sign in
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Set variable for sign-in error due to fail validation
     var signInError = false;
 
     // Check if email and password are empty
@@ -47,20 +49,23 @@ function SignIn(props) {
       setEmailErrorMessage(null);
     }
 
+    // Terminate handleSubmit if fail validation
     if (signInError === true) {
       return;
     }
 
+    // Get boolean true or false from verifyUser
     const verified = verifyUser(fields.email, fields.password);
 
     // If verified login the user.
     if(verified === true) {
       props.loginUser(fields.email);
       alert('Sign In Successfull!');
-      // Navigate to the home page.
+      // Navigate to the profile page.
       navigate("/profile");
       // Refresh page
       navigate(0);
+      // Terminate handleSubmit if user verification sucess
       return;
     }
 

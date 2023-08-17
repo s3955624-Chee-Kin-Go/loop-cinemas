@@ -16,6 +16,7 @@ function App() {
   const [password, setPasword] = useState(getPassword());
   const [signupDate, setSignUpDate] = useState(getSignUpDate());
 
+  // login user function
   const loginUser = (username, email, password, signupdate, index) => {
     setUsername(username);
     setEmail(email);
@@ -24,6 +25,7 @@ function App() {
     setIndex(index);
   }
 
+  // logout user function
   const logoutUser = () => {
     removeUser();
     setUsername(null);

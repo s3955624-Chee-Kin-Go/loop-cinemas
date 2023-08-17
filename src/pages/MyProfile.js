@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { updateUser, deleteUser, removeUser, sortMovies } from "../data/repository";
 import { useNavigate } from "react-router-dom";
-import './pagesCSS/MyProfile.css';
-import '../pages/pagesCSS/SignIn.css';
 import {
   MDBIcon,
   MDBBtn,
@@ -11,6 +9,8 @@ import {
   MDBModalContent,
   MDBModalBody
 } from 'mdb-react-ui-kit';
+import './pagesCSS/MyProfile.css';
+import '../pages/pagesCSS/SignIn.css';
 
 function MyProfile(props) {
   const navigate = useNavigate();
@@ -59,6 +59,7 @@ function MyProfile(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Set variable for edit profile error due to fail validation
     var editProfileError = false;
 
     // Check if username, email, and password are empty
@@ -79,6 +80,7 @@ function MyProfile(props) {
       setEmailErrorMessage(null);
     }
 
+    // Terminate handleSubmit if fail validation
     if (editProfileError === true) {
       return;
     }
@@ -100,26 +102,10 @@ function MyProfile(props) {
           <div className="profile-header">
             <h1>My Profile</h1>
             <div className="edit-icons">
-              <MDBBtn
-                outline
-                color="light"
-                floating
-                href=""
-                role="button"
-                className="edit-icon"
-                onClick={toggleShow}
-              >
+              <MDBBtn outline color="light" floating role="button" className="edit-icon" onClick={toggleShow}>
                 <MDBIcon far icon="edit" style={{ fontSize: "1rem" }} />
               </MDBBtn>
-              <MDBBtn
-                outline
-                color="light"
-                floating
-                href=""
-                role="button"
-                className="edit-icon"
-                onClick={handleRemoveUser}
-              >
+              <MDBBtn outline color="light" floating role="button" className="edit-icon" onClick={handleRemoveUser}>
                 <MDBIcon far icon="trash-alt" style={{ fontSize: "1rem" }} />
               </MDBBtn>
             </div>
@@ -133,54 +119,22 @@ function MyProfile(props) {
         </div>
       </section>
 
-      <MDBModal
-        show={EditProfileModal}
-        setShow={setEditProfileModal}
-        tabIndex="-1"
-        centered
-      >
+      <MDBModal show={EditProfileModal} setShow={setEditProfileModal} tabIndex="-1" centered>
         <MDBModalDialog centered style={{ maxWidth: "35%" }} size="lg">
-          <MDBModalContent
-            style={{
-              backgroundColor: "black",
-              border: "2px solid #E50815",
-              borderRadius: "0px",
-            }}
-          >
+          <MDBModalContent style={{backgroundColor: "black", border: "2px solid #E50815", borderRadius: "0px",}}>
             <MDBModalBody style={{ padding: "0" }}>
               <section className="signin-section" style={{ padding: "0" }}>
-                <div
-                  className="signin-container"
-                  style={{
-                    margin: "0",
-                    width: "auto",
-                    border: "none",
-                    borderRadius: "0px",
-                  }}
-                >
+                <div className="signin-container" style={{ margin: "0", width: "auto", border: "none", borderRadius: "0px" }}>
                   <h1>Edit Profile</h1>
                   <div className="signin-row">
                     <form onSubmit={handleSubmit} noValidate>
                       <div className="form-container">
                         <label htmlFor="username">Name</label>
-                        <input
-                          name="username"
-                          id="username"
-                          value={fields.username}
-                          onChange={handleInputChange}
-                          required
-                        />
+                        <input name="username" id="username" value={fields.username} onChange={handleInputChange} required />
                       </div>
                       <div className="form-container">
                         <label htmlFor="email">Email</label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          required
-                          value={fields.email}
-                          onChange={handleInputChange}
-                        />
+                        <input type="email" name="email" id="email" required value={fields.email} onChange={handleInputChange}/>
                       </div>
                       {emailErrorMessage !== null && (
                         <div className="form-container">
@@ -189,29 +143,15 @@ function MyProfile(props) {
                           </span>
                         </div>
                       )}
-
                       <div className="form-container">
-                        <input
-                          type="submit"
-                          className="btn submit-btn"
-                          value="UPDATE"
-                          style={{ marginRight: "1rem" }}
-                        />
-
-                        <input
-                          type="button"
-                          className="btn submit-btn"
-                          onClick={toggleShow}
-                          value="CANCEL"
-                        />
+                        <input type="submit" className="btn submit-btn" value="UPDATE" style={{ marginRight: "1rem" }} />
+                        <input type="button" className="btn submit-btn" onClick={toggleShow} value="CANCEL"/>
                       </div>
-
                       {errorMessage !== null && (
                         <div className="form-container">
                           <span className="text-danger">{errorMessage}</span>
                         </div>
                       )}
-
                     </form>
                   </div>
                 </div>

@@ -24,6 +24,7 @@ function MovieCard({ imageUrl, title, averageRating, text, type, sessionTime, ha
     setRating(newRating);
   };
 
+  // MovieCard for displaying coming soon movie
   if (type === "movie") {
     return (
       <>
@@ -57,6 +58,7 @@ function MovieCard({ imageUrl, title, averageRating, text, type, sessionTime, ha
                   <div className="" style={{marginTop: "10px"}}>
                     <p style={{color:"white", fontFamily:"var(--font-montserrat)"}}>Session Time</p>
                     <ul style={{color:"white", fontFamily:"var(--font-montserrat)"}}>
+                    {/* Display all session time*/}
                     {
                       sessionTime.map((time) =>
                       <li>{time}</li>
@@ -80,6 +82,8 @@ function MovieCard({ imageUrl, title, averageRating, text, type, sessionTime, ha
       </>
     );
   } 
+
+  // MovieCard for displaying movie for review
   else {
     return (
       <>

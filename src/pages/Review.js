@@ -166,7 +166,7 @@ function Review(props) {
         <div>
           {
             posts.length === 0 ?
-              <span style={{color: "white"}}>No posts have been submitted.</span>
+              <span style={{color: "white"}}>No reviews have been submitted.</span>
               :
               posts.map((x, index) =>
               <div className="post-box">

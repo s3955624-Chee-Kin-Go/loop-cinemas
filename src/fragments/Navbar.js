@@ -7,33 +7,32 @@ function Navbar(props) {
   return (
     <>
       <div className="navBar">
-          <Link className="logo-link" to="/"><img className="img-style" alt="" src={logo}/></Link>
+          <Link className="logo-link" to="/"><img className="img-style" alt="loop_cinemas_logo" src={logo}/></Link>
           {props.username !== null &&
-              <>
-                <div className="other-pages">
-                  <Link className="" to="/review">Review</Link>
-                  {/*Link to Forum and Profile after successfully sign in*/}
-                </div>
-                <div className="other-pages">
-                  <Link className="" to="/profile">Profile</Link>
-                </div>
-              </>
+            <>
+              <div className="other-pages">
+                <Link className="" to="/review">Review</Link>
+                {/*Link to Forum and Profile after successfully sign in*/}
+              </div>
+              <div className="other-pages">
+                <Link className="" to="/profile">Profile</Link>
+              </div>
+            </>
           }
           {props.username === null ?
             <div className="box">
-            <Link className="" to="/sign-in">Sign In</Link>
-          </div>
-              : 
-              <>
+              <Link className="" to="/sign-in">Sign In</Link>
+            </div>
+            : 
+            <>
               <div className="welcome-text">
                 <p>Welcome, {props.username}</p>
               </div>
               <div className="box">
                 <Link className="" to="/" onClick={props.logoutUser}>Sign Out</Link>
               </div>
-              </>
+            </>
           }
-          
       </div>
     </>
   );

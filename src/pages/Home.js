@@ -6,12 +6,15 @@ import { getMovies } from '../data/repository';
 
 
 function Home() {
+  // Get movies array from local storage
   const movies = getMovies();
+
   return (
     <>
     <h1 className='section-title'>Coming Soon</h1>
     <section className="movie-section">
       <div className='movie-row'>
+        {/*Display all movies*/}
         {
           movies.map((movie) =>
             <div className='movie-column'>
@@ -28,6 +31,7 @@ function Home() {
       </div>
     </section>
 
+    {/* Display About Us component */}
     <AboutUs />
     
     </>
