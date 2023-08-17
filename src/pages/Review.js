@@ -55,13 +55,13 @@ function Review(props) {
     }
 
     // Provide visual cue to user to confirm review edit
-    const confirmDelete = window.confirm("Are you sure you want to edit your post?");
+    const confirmEdit = window.confirm("Are you sure you want to edit your review?");
 
-    if (confirmDelete) {
-      // Delete user from localStorage
+    if (confirmEdit) {
+      // Edit review in local storage
       editReview(newRating, newComment, postIndex)
-      // Visual cue for alerting user profile is deleted
-      alert("Your post is now edited!"); 
+      // Visual cue for alerting user review is edited
+      alert("Your review is now edited!"); 
       // Sort Movies
       sortMovies();
       // Navigate to the review page.
@@ -209,7 +209,7 @@ function Review(props) {
             <MDBModalBody style={{padding: "0"}}>
               <section className="signin-section" style={{padding: "0"}}>
                 <div className="signin-container" style={{margin: "0", width: "auto", border: "none", borderRadius: "0px"}}>
-                  <h1>Edit Post</h1>
+                  <h1>Edit Review</h1>
                   <div className="signin-row">
                     <form onSubmit={(event) => handleEditPost(event, rating, post, selectedPostIndex)}>
                       <div className="form-container">
